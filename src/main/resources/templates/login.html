@@ -7,11 +7,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>RARDB</h1>
-        <!-- <a href="/cats"> Cats here!</a> -->
+        <h1>TOP RATED MOVIES</h1>
+		<p>Top 10 movies as rated by RARDB users</p>
+		
+		<!-- table with top 10 -->
+		<h3>Showing Top 10 Titles</h3>
+        <table class="table table-striped">
+       
+       <tr>
+       <th>#</th>
+	   <th>Tile</th>
+       <th>Title</th>
+       <th>Rating</th>
+	   <th>Your Rating</th>
+	   <th>Add a Review</th>
+       
+	   <!-- need to replace cats by a movie/film object -->
+        <tr th:each="cats: ${cats}">
+        <td th:text="${cats.id}"/>
+        <td th:text="${cats.nickname}"/>
+        <td>
 		
 		<!-- a relaod button -->
-		<!-- table with top 10 -->
+		
+		
 		<!-- add a review button -->
 		<!-- log in option -->
 		<!--  search -->
