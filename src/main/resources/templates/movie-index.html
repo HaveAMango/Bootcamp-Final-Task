@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RARDB3 add a movie Review</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+		<h3 class="headerPadding">
+		 Movie search page
+		  <small class="text-muted"> to write a review</small>
+		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
+		</h3> 
+		<!--  search -->
+
+	    <table class="table table-bordered">
+			<tr class = "table-active">
+				<th>Title</th>
+				<th>Year</th>		
+				<th>imdbID </th>
+				<th>Type</th>
+				<th>Poster</th>
+			</tr>
+			<tr>
+			    <tr th:each="movie: ${findMovie}">
+			        <td th:text="${movie.Title}"/>
+			        <td th:text="${movie.Year}"/>
+			   		<td th:text="${movie.imdbID}"/>
+			        <td th:text="${movie.Type}"/>
+			        <td> 
+			        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
+			        </td>
+			       
+		
+			        
+	  			</tr>
+			</tr>
+	    </table>
+    </div>
+		
+
+</body>
+</html>
