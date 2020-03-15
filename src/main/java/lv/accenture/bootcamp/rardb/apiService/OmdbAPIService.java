@@ -1,26 +1,20 @@
 package lv.accenture.bootcamp.rardb.apiService;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.List;
-import java.net.URLConnection;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.stereotype.Component;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+
 
 
 
