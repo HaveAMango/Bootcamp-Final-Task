@@ -43,6 +43,13 @@ public class SearchResult {
 		return Poster;
 	}
 	
+	///////////////////////////
+	public Integer getId () {
+		return id;
+	}
+	public void setId (Integer id) {
+		this.id=id;
+	}
 	
 
 //	public double getimdbRating() {

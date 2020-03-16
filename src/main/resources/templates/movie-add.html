@@ -8,14 +8,39 @@
 <body>
     <div class="container">
         <h1>RARDB</h1>
-        <!-- <a href="/cats"> Cats here!</a> -->
-		
 
 		<!-- Add a review form -->
 		<!-- submit button -->
 		<!-- comments section -->
 		<!-- back button -->
 		<!--  reload -->
+		
+
+
+		<form action="#" th:action="@{/movie/movie-add/{id}(id=${movie.ImdbId})}"
+			th:object="${movie}" method="post">
+			<div class="row">
+				<div class="form-group col-md-8">
+					<label for="review" class="col-form-label">Write a review:</label><br>
+					<input type="text" th:field="*{review}" class="form-control" id="review"> 
+					
+						<label for="rating" class="col-form-label">Rate the movie:</label><br>
+						<span th:if="${#fields.hasErrors('review')}" th:errors="*{review}" class="text-danger"/><br>
+
+					<input type="number" th:field="*{rating}" class="form-control"
+						id="rating">
+						
+					<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="text-danger"/><br>
+							
+
+
+
+				</div>
+				<div class="form-group col-md-8">
+					<input type="submit" class="btn btn-primary" value="Add a review">
+				</div>
+
+			
 
     </div>
 </body>
