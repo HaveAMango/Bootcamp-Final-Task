@@ -34,14 +34,11 @@ public class MovieController {
 			Title = Title.replaceAll(" ", "&");
 		}		
 		List<SearchResult> findMovie = search.getFilm(Title);
-		System.out.println(findMovie);
-		model.addAttribute("findMovie", findMovie);		
 		return "movie-index";
 	}
 	
 
 	
-
 	
 	
 }
