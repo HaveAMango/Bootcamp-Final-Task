@@ -1,5 +1,6 @@
 package lv.accenture.bootcamp.rardb.controller;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ import lv.accenture.bootcamp.rardb.apiService.OmdbAPIService;
 import lv.accenture.bootcamp.rardb.apiService.SearchResult;
 import lv.accenture.bootcamp.rardb.model.Movie;
 import lv.accenture.bootcamp.rardb.repository.MovieRepository;
-import lv.accenture.bootcamp.webdemo.model.Cat;
+
 
 @Controller
 public class MovieController {
@@ -79,24 +80,10 @@ public class MovieController {
 			System.out.println(movieToReview.getReview() + " " + movieToReview.getRating() + movieToReview.getImdbId());
 			System.out.println(movieRepository.toString());
 			
-			return "main";
+			return "redirect:/movies/main";
 		
 
 	}
-//	@PostMapping("/movie/movie-add/{id}")
-//	public String addReview(@PathVariable String id, @Valid Movie movieToReview, BindingResult bindingResult) {
-//		System.out.println("the imdb id" + id);
-//
-//			
-//			movieToReview.setImdbId(id);
-//			movieRepository.save(movieToReview);
-//			
-//			System.out.println(movieToReview.getReview() + " " + movieToReview.getRating() + movieToReview.getImdbId());
-//			System.out.println(movieRepository.toString());
-//			
-//			return "main";
-//		
-//
-//	}
+
 	
 }
