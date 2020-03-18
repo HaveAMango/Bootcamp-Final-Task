@@ -44,22 +44,14 @@ public class SearchResult {
 	}
 	
 	///////////////////////////
-	public Integer getId () {
-		return id;
-	}
-	public void setId (Integer id) {
-		this.id=id;
-	}
-	
-
-//	public double getimdbRating() {
-//		return imdbRating;
-//	}
-//
-//	public void setimdbRating(double imdbRating) {
-//		this.imdbRating = imdbRating;
-//	}
-
+	/*
+	 * public Integer getId () { return id; } public void setId (Integer id) {
+	 * this.id=id; }
+	 * 
+	 * 
+	 * // public double getimdbRating() { // return imdbRating; // } // // public
+	 * void setimdbRating(double imdbRating) { // this.imdbRating = imdbRating; // }
+	 */
 	@Override
 	public String toString() {
 		return "SearchResult [id=" + id + ", Title=" + Title + ", Year=" + Year + ", imdbID=" + imdbID + ", Type="

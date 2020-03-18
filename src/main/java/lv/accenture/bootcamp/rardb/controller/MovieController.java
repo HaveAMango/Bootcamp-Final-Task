@@ -18,6 +18,7 @@ import lv.accenture.bootcamp.rardb.apiService.OmdbAPIService;
 import lv.accenture.bootcamp.rardb.apiService.SearchResult;
 import lv.accenture.bootcamp.rardb.model.Movie;
 import lv.accenture.bootcamp.rardb.repository.MovieRepository;
+import lv.accenture.bootcamp.webdemo.model.Cat;
 
 @Controller
 public class MovieController {
@@ -27,6 +28,8 @@ public class MovieController {
 
 	@Autowired
 	private MovieRepository movieRepository;
+
+	
 
 
 	@GetMapping("/movie/search")
@@ -41,44 +44,59 @@ public class MovieController {
 	@GetMapping("/findMovie/addReview/{id}")
 	public String addReview(@PathVariable String id, Model model) {
 	
-		
 		System.out.println("the imdb id" + id);
-		System.out.println("ERRRRRRRRRRRRRRRRRRRRRROR");
-//	public String editCatPage(@PathVariable String imdbId, @RequestParam Integer rating, @RequestParam String review,
-//			Model model) {
-
-
-
-		//List<SearchResult> findMovie = search.getFilm(id);
-
-		//SearchResult movieToReview = findMovie.get(id);
 
 		Movie movieToReview = new Movie();
-		movieToReview.setId(id);
+		movieToReview.setImdbId(id);
+//		movieToReview.setPoster(Poster);
+//		movieToReview.setTitle(Title);
+		System.out.println("We are here");
+		//movieToReview.setRatingSum(movieToReview.getRatingSum()+rating);
 
 		model.addAttribute("movie", movieToReview);
 
 		return "movie-add";
 
 	}
+	
+	@GetMapping("/movies/main")
+	public String topTenList( Model model) {
+		
+		//Add only top 10 movies
+		Iterable<Movie> movies = movieRepository.findAll();
+		model.addAttribute("moviesTop", movies);
+		return "main";
+	}
 
 	@PostMapping("/movie/movie-add/{id}")
 	public String addReview(@PathVariable String id, @Valid Movie movieToReview, BindingResult bindingResult) {
 		System.out.println("the imdb id" + id);
-		System.out.println("ERRRRRRRRRRRRRRRRRRRRRROR");
-		if (bindingResult.hasErrors()) {
-			return "movie-add";
-		} else {
-//			movieToReview1.setReview(review);
-//			movieToReview1.setRating(rating);
 
+			
+			movieToReview.setImdbId(id);
 			movieRepository.save(movieToReview);
 			
 			System.out.println(movieToReview.getReview() + " " + movieToReview.getRating() + movieToReview.getImdbId());
-
-			return "movie-index";
-		}
+			System.out.println(movieRepository.toString());
+			
+			return "main";
+		
 
 	}
-
+//	@PostMapping("/movie/movie-add/{id}")
+//	public String addReview(@PathVariable String id, @Valid Movie movieToReview, BindingResult bindingResult) {
+//		System.out.println("the imdb id" + id);
+//
+//			
+//			movieToReview.setImdbId(id);
+//			movieRepository.save(movieToReview);
+//			
+//			System.out.println(movieToReview.getReview() + " " + movieToReview.getRating() + movieToReview.getImdbId());
+//			System.out.println(movieRepository.toString());
+//			
+//			return "main";
+//		
+//
+//	}
+	
 }

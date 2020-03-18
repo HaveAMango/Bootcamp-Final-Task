@@ -34,12 +34,12 @@
 			</tr>
 			<tr>
 			    <tr th:each="movie: ${findMovie}">
-			        <td th:text="${movie.Title}"/>
+			        <td th:text="${movie.Title}" />
 			        <td th:text="${movie.Year}"/>
 			   		<td th:text="${movie.imdbID}"/>
 			        <td th:text="${movie.Type}"/>
 			        <td> 
-			        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
+			        	<img th:src="${movie.Poster}" style="height:150px;"/>		        
 			        </td>
 			       
 			      <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>

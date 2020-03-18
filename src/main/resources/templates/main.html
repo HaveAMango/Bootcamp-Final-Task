@@ -11,7 +11,7 @@
 		
         
 		<!--  search -->
-				<form th:action="@{/search}" method="get">
+				<form th:action="@{/movie/search}" method="get">
 			<input type="text" class="form-control" name="movieName" id="movieName"
 				th:value="${movieName}" /> <input type="submit" value="Search" />
 
@@ -21,7 +21,7 @@
 		<!-- table with top 10 -->
 
 <!-- add if - was user loged in or not and depending on that the add review button is active or not -->
-		<div th:if="${not #lists.isEmpty(movies)}">
+		 <!-- <div th:if="${not #lists.isEmpty(movies)}">  -->
 
 
 			<table class="table table-striped">
@@ -32,42 +32,38 @@
 					<th>Picture</th>
 					<th>RDMB Rating</th>
 					<th>Your Rating</th>
-					<th>Add a review</th>
+					<th>Reviews</th>
 					
 					<!-- change the cats to movies/film -- the object -->
-				<tr th:each="movie: ${movies}">
-					<td th:text="${movie.id}" />
-					<td><img th:src="${movie.photo}" width="80" height="80" /></td>
-					<td th:text="${movie.name}" />
+				<tr th:each="movie: ${moviesTop}">
+					<!-- <td th:text="${movie.imdbID}" /> -->
+					<td th:text="${movie.Title}" />
+					<!-- <td><img th:src="${movie.poster}" width="80" height="80" /></td> -->
+					
 					<td th:text="${movie.rating}" />
-					<td th:text="${movie.userRating}" />
+					<td th:text="${movie.review}" />
 					
 					
 
 
-					<td><a th:href="@{/movie-add{id}(id=${movie.id})}"
-						class="btn btn-outline-primary"> <span>Add</span>
-					</a></td>
+					
 				</tr>
 
 			</table>
-		</div>
+		 <!-- </div> 
 		<div th:unless="${not #lists.isEmpty(movies)}">
 			<div class="card">
 				<div class="card-body">No movie ratings available at the moment!</div>
 
 			</div>
-		</div>
+		</div>  -->
 					
 		<!-- a relaod button -->
-		<div>
-		<a th:href="@{/index}" class="btn btn-outline-primary">Reload
-				the page</a>
-					</div>
+		
 		
 		<!-- add a review button -->
 		<div>
-		<a th:href="@{/movie-add}" class="btn btn-outline-primary">Reload
+		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
 				the page</a>
 					</div>
 		<!-- log in option -->
