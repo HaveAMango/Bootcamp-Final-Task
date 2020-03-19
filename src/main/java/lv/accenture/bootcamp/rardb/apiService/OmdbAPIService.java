@@ -18,7 +18,6 @@ import com.google.gson.Gson;
 
 
 
-//import org.json.JSONObject;
 
 
 @Service
@@ -26,9 +25,21 @@ public class OmdbAPIService {
 
 
 	private String requestUrl = "http://www.omdbapi.com/?apikey=fe474bfb";
-
+	
+	public String checkTitle(String Title) {
+		if (Title.contains(" ")) {
+			Title = Title.replaceAll(" ", "&");
+		}
+		if (Title.contains("the")) {
+			Title = Title.replaceAll("the", "");
+		}
+		System.out.println("changing Title" + Title);
+		return Title;
+	}
+	
 	public List<SearchResult> getFilm(String requestedFilm) {
 		try {
+			System.out.println("api received " + requestedFilm);
 			URL url = new URL(requestUrl + "&s=" + requestedFilm);
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 			urlConnection.setRequestMethod("GET");
@@ -50,7 +61,14 @@ public class OmdbAPIService {
 			
 			Gson gson = new Gson();
 			SearchResponse response = gson.fromJson(jsonResponse, SearchResponse.class);
-			List<SearchResult> searchList = response.getSearch();
+			List<SearchResult> searchList = null;
+			if (response.getResponse()) {
+				searchList = response.getSearch();
+				System.out.println(response);
+				System.out.println(searchList);
+				System.out.println("size: " + searchList.size());
+
+			}
 			return searchList;
 			
 		} catch (Exception e) {
