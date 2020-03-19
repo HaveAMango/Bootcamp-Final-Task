@@ -1,4 +1,4 @@
-	<!-- 
+	 
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -8,38 +8,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+ <div class="container">
+    <form action="#"
+      th:action="@{/login}"
+      th:object="${user}" method="post">
+  <div class="row">
+        <div class="form-group col-md-8">
+            <label for="userName" class="col-form-label">User Name:</label>
+            <input type="text" th:field="*{userName}" class="form-control" id="userName">
+            <html lang="en" xmlns:th="http://www.thymeleaf.org">
+				<span th:if="${#fields.hasErrors('nickname')}" th:errors="*{userName}" class="text-danger"/>
+				<div></div>
+            <label for="password" class="col-form-label">Password:</label>
+            <input type="text" th:field="*{password}" class="form-control" id="password">
+            <html lang="en" xmlns:th="http://www.thymeleaf.org">
+				<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"/>
+				<div></div>
+        </div>
 
-        <h1>TOP RATED MOVIES</h1>
-		<p>Top 10 movies as rated by RARDB users</p>
-		
-		<!-- table with top 10 -->
-		<h3>Showing Top 10 Titles</h3>
-        <table class="table table-striped">
        
-       <tr>
-       <th>#</th>
-	   <th>Tile</th>
-       <th>Title</th>
-       <th>Rating</th>
-	   <th>Your Rating</th>
-	   <th>Add a Review</th>
-       
-	   <!-- need to replace cats by a movie/film object -->
-        <tr th:each="cats: ${cats}">
-        <td th:text="${cats.id}"/>
-        <td th:text="${cats.nickname}"/>
-        <td>
-		
-		<!-- a relaod button -->
-		
-		
-
-		<!-- add a review button -->
-		<!-- log in option -->
-		<!--  search -->
     </div>
+</form>
+       
+    </div>
+    
 </body>
 </html>
 
--->
