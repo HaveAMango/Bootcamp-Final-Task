@@ -30,9 +30,8 @@ public class MovieController {
 	
 	@GetMapping("/movie/search")
 	public String movieFindByTitle(@RequestParam String Title, Model model) {
-		if (Title.contains(" ")) {
-			Title = Title.replaceAll(" ", "&");
-		}		
+		Title = search.checkTitle(Title);
+		
 		List<SearchResult> findMovie = search.getFilm(Title);
 		model.addAttribute("findMovie", findMovie);
 		System.out.println(findMovie);

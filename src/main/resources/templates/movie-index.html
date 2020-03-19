@@ -18,29 +18,39 @@
 	    	<input type="submit" value="Search"/>
 
 		</form>
-	    <table class="table table-bordered">
-			<tr class = "table-active">
-				<th>Title</th>
-				<th>Year</th>		
-				<th>imdbID </th>
-				<th>Type</th>
-				<th>Poster</th>
-			</tr>
-			<tr>
-			    <tr th:each="movie: ${findMovie}">
-			        <td th:text="${movie.Title}"/>
-			        <td th:text="${movie.Year}"/>
-			   		<td th:text="${movie.imdbID}"/>
-			        <td th:text="${movie.Type}"/>
-			        <td> 
-			        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
-			        </td>
-			       
 		
-			        
-	  			</tr>
-			</tr>
-	    </table>
+		<div th:if="${not #lists.isEmpty(findMovie)}">
+		    <table class="table table-bordered">
+				<tr class = "table-active">
+					<th>Title</th>
+					<th>Year</th>		
+					<th>imdbID </th>
+					<th>Type</th>
+					<th>Poster</th>
+				</tr>
+				<tr>
+				    <tr th:each="movie: ${findMovie}">
+				        <td th:text="${movie.Title}"/>
+				        <td th:text="${movie.Year}"/>
+				   		<td th:text="${movie.imdbID}"/>
+				        <td th:text="${movie.Type}"/>
+				        <td> 
+				        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
+				        </td>
+				       
+			
+				        
+		  			</tr>
+				</tr>
+		    </table>
+		       </div>
+	    <div th:unless="${not #lists.isEmpty(findMovie)}">
+	    	<div class="card">
+	        <div class="card-body">
+	           No movie found. Please try again with different title.
+	       </div>
+	    </div>
+	    </div>
     </div>
 		
 
