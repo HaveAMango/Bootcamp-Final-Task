@@ -1,37 +1,32 @@
-	 
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>RARDB3 Log in/ Sign up</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<title>RARDB3 Log in/ Sign up</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
- <div class="container">
-    <form action="#"
-      th:action="@{/login}"
-      th:object="${user}" method="post">
-  <div class="row">
-        <div class="form-group col-md-8">
-            <label for="userName" class="col-form-label">User Name:</label>
-            <input type="text" th:field="*{userName}" class="form-control" id="userName">
-            <html lang="en" xmlns:th="http://www.thymeleaf.org">
-				<span th:if="${#fields.hasErrors('nickname')}" th:errors="*{userName}" class="text-danger"/>
-				<div></div>
-            <label for="password" class="col-form-label">Password:</label>
-            <input type="text" th:field="*{password}" class="form-control" id="password">
-            <html lang="en" xmlns:th="http://www.thymeleaf.org">
-				<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"/>
-				<div></div>
-        </div>
-
-       
-    </div>
-</form>
-       
-    </div>
-    
+	<div class="container">
+		<form action="#" th:action="@{/login}" th:object="${user}"
+			method="post">
+			<div class="row">
+				<div class="form-group col-md-8">
+					<label for="userName" class="col-form-label">User Name:</label> <input
+						type="text" th:field="*{userName}" class="form-control"
+						id="userName"> <span
+						th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
+						class="text-danger" />
+					</br>
+					<label for="password" class="col-form-label">Password:</label> <input
+						type="text" th:field="*{password}" class="form-control"
+						id="password"> <span
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+						class="text-danger" />
+					</br>
+				</div>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
-
