@@ -12,9 +12,8 @@
         
 		<!--  search -->
 				<form th:action="@{/movie/search}" method="get">
-			<input type="text" class="form-control" name="movieName" id="movieName"
-				th:value="${movieName}" /> <input type="submit" value="Search" />
-
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
 
 		</form>
 		
@@ -28,19 +27,20 @@
 
 				<tr>
 					<th>Rank</th>
-					<th>Title</th>
-					<th>Picture</th>
+					<th>Tittle</th>
+					<th>Poster</th>
 					<th>RDMB Rating</th>
-					<th>Your Rating</th>
-					<th>Reviews</th>
+					<th>IDMB Rating</th>
+					<th>Latest Review</th>
+					<th>Rate the Movie</th>
+					<th>Add a Review</th>
 					
-					<!-- change the cats to movies/film -- the object -->
+					
 				<tr th:each="movie: ${moviesTop}">
-					<!-- <td th:text="${movie.imdbID}" /> -->
-					<td th:text="${movie.Title}" />
-					<!-- <td><img th:src="${movie.poster}" width="80" height="80" /></td> -->
-					
-					<td th:text="${movie.rating}" />
+					<td th:text="${movie.ranking}" /> 
+					<td th:text="${movie.tittle}" />
+					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
+					<td th:text="${movie.averageRating}" />
 					<td th:text="${movie.review}" />
 					
 					

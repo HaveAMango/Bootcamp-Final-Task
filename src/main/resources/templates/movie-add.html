@@ -17,20 +17,25 @@
 		
 
 
-		<form action="#" th:action="@{/movie/movie-add/{id}(id=${movie.ImdbId})}"
-			th:object="${movie}" method="post">
+		<form action="#" th:action="@{/movie/movie-add/{id}(id=${review.ImdbId})}"
+			th:object="${review}" method="post">
 			<div class="row">
 				<div class="form-group col-md-8">
-					<label for="review" class="col-form-label">Write a review:</label><br>
-					<input type="text" th:field="*{review}" class="form-control" id="review"> 
+					<label for="userReview" class="col-form-label">Write a review:</label><br>
+					<input type="text"  th:field="*{userReview}" class="form-control" id="userReview"> 
 					
 						<label for="rating" class="col-form-label">Rate the movie:</label><br>
-						<span th:if="${#fields.hasErrors('review')}" th:errors="*{review}" class="text-danger"/><br>
+						<span th:if="${#fields.hasErrors('userReview')}" th:errors="*{userReview}" class="text-danger"/><br>
 
 					<input type="number" th:field="*{rating}" class="form-control"
 						id="rating">
 						
 					<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="text-danger"/><br>
+					<label for="userId" class="col-form-label">Write ayour user name:</label><br>
+					<input type="text" th:field="*{userId}" class="form-control" id="userId"> 
+					
+						
+						<span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="text-danger"/><br>
 							
 
 

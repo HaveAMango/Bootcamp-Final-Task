@@ -12,18 +12,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-
 import com.google.gson.Gson;
-
-
-
 
 //import org.json.JSONObject;
 
-
 @Service
 public class OmdbAPIService {
-
 
 	private String requestUrl = "http://www.omdbapi.com/?apikey=fe474bfb";
 
@@ -47,17 +41,15 @@ public class OmdbAPIService {
 
 			String jsonResponse = sb.toString();
 			bufferedReader.close();
-			
+
 			Gson gson = new Gson();
 			SearchResponse response = gson.fromJson(jsonResponse, SearchResponse.class);
 			List<SearchResult> searchList = response.getSearch();
 			return searchList;
-			
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	
 
 }
