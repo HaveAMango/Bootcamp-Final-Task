@@ -14,13 +14,9 @@ public class IndexController {
 		return "index";
 	}
 	
-	
-
-	@GetMapping("/login")
-	public String login(Model model) {
-		model.addAttribute("user", new User());
-		return "login";
+	@GetMapping("/main")
+	public String toMain() {
+		return "main";
 	}
-
 
 }

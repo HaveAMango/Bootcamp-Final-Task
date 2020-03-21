@@ -18,12 +18,14 @@
 						th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
 						class="text-danger" />
 					</br>
-					<label for="password" class="col-form-label">Password:</label> <input
-						type="text" th:field="*{password}" class="form-control"
-						id="password"> <span
-						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-						class="text-danger" />
-					</br>
+				 <label for="password"
+						class="col-form-label">Password:</label> <input type="text"
+						th:field="*{password}" class="form-control" id="password">
+						<span th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}" class="text-danger" /> </br>
+					<div>
+						<a th:href="@{/main}" class="btn btn-outline-primary">Submit</a>
+					</div>
 				</div>
 			</div>
 		</form>
