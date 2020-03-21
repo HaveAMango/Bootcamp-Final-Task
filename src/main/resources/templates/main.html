@@ -31,9 +31,8 @@
 					<th>Poster</th>
 					<th>RDMB Rating</th>
 					<th>IDMB Rating</th>
-					<th>Latest Review</th>
 					<th>Rate the Movie</th>
-					<th>Add a Review</th>
+					<th>Read the reviews</th>
 					
 					
 				<tr th:each="movie: ${moviesTop}">
@@ -41,7 +40,11 @@
 					<td th:text="${movie.tittle}" />
 					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
 					<td th:text="${movie.averageRating}" />
-					<td th:text="${movie.review}" />
+					
+					
+					<td><a th:href="@{/movie/reviews/{imdbId}(imdbId=${movie.imdbId})}"
+						class="btn btn-outline-primary"> <span>Reviews</span>
+					
 					
 					
 
@@ -66,10 +69,8 @@
 		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
 				the page</a>
 					</div>
-		<!-- log in option -->
-		<div>
-		<a th:href="@{/login}"class="btn btn-outline-primary">Log-in to access more features!"</a>
-		</div>
+	
+		
 		
 		
     </div>

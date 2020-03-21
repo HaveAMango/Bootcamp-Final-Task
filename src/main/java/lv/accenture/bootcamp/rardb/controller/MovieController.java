@@ -41,12 +41,17 @@ public class MovieController {
 		model.addAttribute("findMovie", findMovie);
 		return "movie-index";
 	}
+	
+	
 
 	@GetMapping("/movies/main")
 	public String topTenList(Model model) {
 
 		// Add only top 10 movies
-		Iterable<Movie> movies = movieRepository.findAll();
+		List<Movie> movieList = (List<Movie>) movieRepository.findAll();
+		
+		
+		Iterable<Movie> movies = movieRepository.findTopTen();
 		model.addAttribute("moviesTop", movies);
 
 		return "main";
@@ -55,16 +60,14 @@ public class MovieController {
 	@GetMapping("/findMovie/addReview/{id}")
 	public String addReview(@PathVariable String id, Model model) {
 
+		/// should add an option that user can vote only once, afterwards he/she can
+		/// edit their choice
 		System.out.println("the imdb id" + id);
 
 		Review reviewAdd = new Review();
 		reviewAdd.setImdbId(id);
 
-		// Movie movieToReview = new Movie();
-		// movieToReview.setImdbId(id);
-
 		System.out.println("before get");
-		// System.out.println(movieToReview.toString());
 
 		model.addAttribute("review", reviewAdd);
 
@@ -72,6 +75,7 @@ public class MovieController {
 
 	}
 
+	
 	@PostMapping("/movie/movie-add/{id}")
 	public String addReview(@PathVariable String id, @Valid Review reviewAdd, BindingResult bindingResult) {
 
@@ -83,22 +87,8 @@ public class MovieController {
 		movieToReview.setImdbId(id);
 
 		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
-		
+
 		Long averageRating = reviewRepository.calculateAverageRating(movieRatingList);
-//		Integer ratingSum = 0;
-//		Integer ratingCount = 0;
-//		Integer averageRating;
-//
-//		
-//		if (movieRatingList.size() > 0) {
-//			for (int i = 0; i < movieRatingList.size(); i++) {
-//				ratingSum = ratingSum + movieRatingList.get(i).getRating();
-//				ratingCount = i + 1;
-//			}
-//			averageRating = ratingSum / ratingCount;
-//		} else {
-//			averageRating = 0;
-//		}
 
 		movieToReview.setAverageRating(averageRating);
 
@@ -110,5 +100,15 @@ public class MovieController {
 		return "redirect:/movies/main";
 
 	}
+	@GetMapping("/movie/reviews/{imdbId}")
+	public String movieReviews(@PathVariable String imdbId, Model model) { 
+		System.out.println("in the review page " + imdbId);
+		List<Review> review = reviewRepository.findByIbmId(imdbId);
+		model.addAttribute("review", review);
+		
+	return"reviews";
+	}
+	
+		
+	}
 
-}
