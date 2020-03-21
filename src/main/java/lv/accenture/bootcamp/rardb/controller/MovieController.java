@@ -83,19 +83,22 @@ public class MovieController {
 		movieToReview.setImdbId(id);
 
 		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
-		Integer ratingSum = 0;
-		Integer ratingCount = 0;
-		Integer averageRating;
-
-		if (movieRatingList.size() > 0) {
-			for (int i = 0; i < movieRatingList.size(); i++) {
-				ratingSum = ratingSum + movieRatingList.get(i).getRating();
-				ratingCount = i + 1;
-			}
-			averageRating = ratingSum / ratingCount;
-		} else {
-			averageRating = 0;
-		}
+		
+		Long averageRating = reviewRepository.calculateAverageRating(movieRatingList);
+//		Integer ratingSum = 0;
+//		Integer ratingCount = 0;
+//		Integer averageRating;
+//
+//		
+//		if (movieRatingList.size() > 0) {
+//			for (int i = 0; i < movieRatingList.size(); i++) {
+//				ratingSum = ratingSum + movieRatingList.get(i).getRating();
+//				ratingCount = i + 1;
+//			}
+//			averageRating = ratingSum / ratingCount;
+//		} else {
+//			averageRating = 0;
+//		}
 
 		movieToReview.setAverageRating(averageRating);
 

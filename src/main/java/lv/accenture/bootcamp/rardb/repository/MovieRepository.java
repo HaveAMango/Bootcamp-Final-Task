@@ -25,4 +25,5 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 //@Query("Select c FROM Movie Where Order By ranking desc limit 10")
 //Movie sortbyRating();
 
+	
 }
