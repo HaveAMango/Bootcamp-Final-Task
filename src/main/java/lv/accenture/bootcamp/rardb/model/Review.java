@@ -3,6 +3,8 @@ package lv.accenture.bootcamp.rardb.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.Valid;
 
@@ -10,6 +12,9 @@ import javax.validation.Valid;
 public class Review implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long reviewId;
+	
 	@Valid
 	private String imdbId;
 
@@ -56,14 +61,21 @@ public class Review implements Serializable {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	public void setReviewId(Long reviewId) {
+		this.reviewId=reviewId;
+	}
+	public Long getReviewId(Long reviewId) {
+		return this.reviewId=reviewId;
+	}
 
-	public Review(@Valid String imdbId, Integer rating, String tittle, String review, String userId) {
+	public Review(Long reviewId, String imdbId, Integer rating, String tittle, String review, String userId) {
 		super();
 		this.imdbId = imdbId;
 		this.rating = rating;
 		this.tittle = tittle;
 		this.userReview = review;
 		this.userId = userId;
+		this.reviewId=reviewId;
 	}
 
 	public Review() {

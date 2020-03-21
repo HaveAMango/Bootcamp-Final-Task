@@ -82,7 +82,7 @@ public class MovieController {
 		Movie movieToReview = new Movie();
 		movieToReview.setImdbId(id);
 
-		List<Review> movieRatingList = reviewRepository.findById(id);
+		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
 		Integer ratingSum = 0;
 		Integer ratingCount = 0;
 		Integer averageRating;

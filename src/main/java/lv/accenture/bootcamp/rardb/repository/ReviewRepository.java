@@ -15,7 +15,7 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
 	
 	@Query("Select c FROM Review c Where c.imdbId LIKE %:id%")
-	List<Review> findById(@Param(value="id")String id);
+	List<Review> findByIbmId(@Param(value="id")String id);
 	
 	@Query("Select c FROM Review c Where c.imdbId LIKE %:id% AND c.userId LIKE %:userId%")
 	Review findByUserId(@Param(value="id")String id, @Param(value="id")String userId);
