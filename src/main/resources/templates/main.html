@@ -65,17 +65,21 @@
 				the page</a>
 					</div>
 		
-		<!-- add a review button -->
+		<!-- add a review button Should make it with limited permitions-->
 		<div>
-		<a th:href="@{/movie-add}" class="btn btn-outline-primary">Reload
-				the page</a>
+		<a th:href="@{/movie-add}" class="btn btn-outline-primary">Add a review</a>
 					</div>
 		<!-- log in option -->
 		<div>
 		<a th:href="@{/login}"class="btn btn-outline-primary">Log-in to access more features!"</a>
 		</div>
-
+		
+		<!-- a user button -->
+		<div>
+		<a th:if="${loggedIn}" th:href="@{/user}" class="btn btn-outline-primary">My account</a>
+					</div>
 	
+		<div th:text="${loggedIn}"></div>
 		
     </div>
 </body>

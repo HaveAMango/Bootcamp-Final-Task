@@ -10,8 +10,13 @@
 	<div class="container">
 		<form th:action="@{/login}" class="form-signin" method="post">
 			<div class="form-group col-md-8">
-				<input type="text" id="username" name="myusername" class="form-control"> 
+					<br></br>
+				<input type="text" id="username" name="myusername" class="form-control">
+					<br></br>
 				<input type="password" id="password" name="password" class="form-control">
+					<br></br>
+					<div id="errors" th:if="${(param.error != null)}">Login or password is incorrect</div>
+					<br></br>
 				<button type="Submit" name="Submit" class="btn btn-primary" value="Login" th:text="Login"></button>
 			</div>
 		</form>
