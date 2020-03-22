@@ -34,10 +34,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     	http.
     		authorizeRequests()
     		.antMatchers("/").permitAll()
-    		.antMatchers("/movie/**").permitAll()
-    		.and().formLogin().loginPage("/login")
+    		.antMatchers("/login").permitAll()
+    		.antMatchers("/movie/**").hasAuthority("USER").anyRequest().authenticated()
+    		.and().formLogin().loginPage("/login").usernameParameter("myusername")
     		.failureUrl("/login?error=true")
-    		.defaultSuccessUrl("/");
+    		.defaultSuccessUrl("/main");
 //    	http.
 //        authorizeRequests()
 //        .antMatchers("/").permitAll()

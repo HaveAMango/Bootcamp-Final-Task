@@ -23,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-    	System.out.println("User details service called");
+    	System.out.println("User details service called: " + userName);
         User user = userService.findUserByUserName(userName);
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("USER"));        

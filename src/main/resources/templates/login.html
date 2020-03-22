@@ -8,25 +8,11 @@
 </head>
 <body>
 	<div class="container">
-		<form action="#" th:action="@{/login}" th:object="${user}"
-			method="post">
-			<div class="row">
-				<div class="form-group col-md-8">
-					<label for="userName" class="col-form-label">User Name:</label> <input
-						type="text" th:field="*{userName}" class="form-control"
-						id="userName"> <span
-						th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"
-						class="text-danger" />
-					</br>
-				 <label for="password"
-						class="col-form-label">Password:</label> <input type="text"
-						th:field="*{password}" class="form-control" id="password">
-						<span th:if="${#fields.hasErrors('password')}"
-						th:errors="*{password}" class="text-danger" /> </br>
-					<div>
-						<input type="submit" class="btn btn-primary" value="Submit">
-					</div>
-				</div>
+		<form th:action="@{/login}" class="form-signin" method="post">
+			<div class="form-group col-md-8">
+				<input type="text" id="username" name="myusername" class="form-control"> 
+				<input type="password" id="password" name="password" class="form-control">
+				<button type="Submit" name="Submit" class="btn btn-primary" value="Login" th:text="Login"></button>
 			</div>
 		</form>
 	</div>
