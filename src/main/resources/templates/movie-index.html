@@ -42,7 +42,7 @@
 			        	<img th:src="${movie.Poster}" style="height:150px;"/>		        
 			        </td>
 			       
-			      <td><a th:href="@{/findMovie/addReview/}" class="btn btn-outline-primary"> <span>Edit</span>
+			        <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
 					</a> </td>
 				 
 	  			</tr>
