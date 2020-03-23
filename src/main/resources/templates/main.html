@@ -11,68 +11,68 @@
 		
         
 		<!--  search -->
-				<form th:action="@{/search}" method="get">
-			<input type="text" class="form-control" name="movieName" id="movieName"
-				th:value="${movieName}" /> <input type="submit" value="Search" />
-
+				<form th:action="@{/movie/search}" method="get">
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
 
 		</form>
 		
 		<!-- table with top 10 -->
 
 <!-- add if - was user loged in or not and depending on that the add review button is active or not -->
-		<div th:if="${not #lists.isEmpty(movies)}">
+		 <!-- <div th:if="${not #lists.isEmpty(movies)}">  -->
 
 
 			<table class="table table-striped">
 
 				<tr>
 					<th>Rank</th>
-					<th>Title</th>
-					<th>Picture</th>
+					<th>Tittle</th>
+					<th>Poster</th>
 					<th>RDMB Rating</th>
-					<th>Your Rating</th>
-					<th>Add a review</th>
+					<th>IDMB Rating</th>
+					<th>Rate the Movie</th>
+					<th>Read the reviews</th>
 					
-					<!-- change the cats to movies/film -- the object -->
-				<tr th:each="movie: ${movies}">
-					<td th:text="${movie.id}" />
-					<td><img th:src="${movie.photo}" width="80" height="80" /></td>
-					<td th:text="${movie.name}" />
-					<td th:text="${movie.rating}" />
-					<td th:text="${movie.userRating}" />
+					
+				<tr th:each="movie: ${moviesTop}">
+					<td th:text="${movie.ranking}" /> 
+					<td th:text="${movie.tittle}" name="tittle" id="tittle"/>
+					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
+					<td th:text="${movie.averageRating}" />
+					
+					
+					<td><a th:href="@{/movie/reviews/}"
+						class="btn btn-outline-primary"> <span>Reviews</span>
+					
 					
 					
 
 
-					<td><a th:href="@{/movie-add{id}(id=${movie.id})}"
-						class="btn btn-outline-primary"> <span>Add</span>
-					</a></td>
+					
 				</tr>
 
 			</table>
-		</div>
+		 <!-- </div> 
 		<div th:unless="${not #lists.isEmpty(movies)}">
 			<div class="card">
 				<div class="card-body">No movie ratings available at the moment!</div>
 
 			</div>
-		</div>
+		</div>  -->
 					
 		<!-- a relaod button -->
-		<div>
-		<a th:href="@{/index}" class="btn btn-outline-primary">Reload
-				the page</a>
-					</div>
+		
 		
 		<!-- add a review button Should make it with limited permitions-->
 		<div>
-		<a th:href="@{/movie-add}" class="btn btn-outline-primary">Add a review</a>
+
+		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
+				the page</a>
+
 					</div>
-		<!-- log in option -->
-		<div>
-		<a th:href="@{/login}"class="btn btn-outline-primary">Log-in to access more features!"</a>
-		</div>
+	
+		
 		
 		<!-- a user button -->
 		<div>

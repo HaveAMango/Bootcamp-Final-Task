@@ -1,26 +1,19 @@
 package lv.accenture.bootcamp.rardb.apiService;
 
-
-
-
-
-
 public class SearchResult {
 
-
 	private Integer id;
-	
+
 	private String Title;
-	
+
 	private String Year;
-	
-	
+
 	private String imdbID;
-	
+
 	private String Type;
-	
+
 	private String Poster;
-	
+
 	private double imdbRating;
 	
 
@@ -44,25 +37,11 @@ public class SearchResult {
 	public String getPoster() {
 		return Poster;
 	}
-	
-	
-
-//	public double getimdbRating() {
-//		return imdbRating;
-//	}
-//
-//	public void setimdbRating(double imdbRating) {
-//		this.imdbRating = imdbRating;
-//	}
 
 	@Override
 	public String toString() {
 		return "SearchResult [id=" + id + ", Title=" + Title + ", Year=" + Year + ", imdbID=" + imdbID + ", Type="
-				+ Type + ", Poster=" + Poster +  "]";
+				+ Type + ", Poster=" + Poster + "]";
 	}
 
-
-	
-
-	
 }

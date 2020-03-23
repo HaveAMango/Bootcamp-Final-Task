@@ -9,6 +9,14 @@
     <div class="container">
 		<h3>
 		 Movie search page
+		 
+		
+		 <form th:action="@{/movie/search}" method="get">
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
+
+		</form>
+				
 		  <small class="text-muted"> to write a review</small>
 		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
 		</h3> 
@@ -38,7 +46,8 @@
 				        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
 				        </td>
 				       
-			
+			 <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
+					</a> </td>
 				        
 		  			</tr>
 				</tr>
@@ -51,6 +60,7 @@
 	       </div>
 	    </div>
 	    </div>
+
     </div>
 		
 
