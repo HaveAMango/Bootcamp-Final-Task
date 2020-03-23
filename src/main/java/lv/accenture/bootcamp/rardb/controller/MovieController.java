@@ -39,9 +39,15 @@ public class MovieController {
 		
 		List<SearchResult> findMovie = search.getFilm(Title);
 
+		// System.out.println("movie search cont" + findMovie.toString()); //remove sout
+		// , or you could get null pointer exeption if movie doesn`t found
+		model.addAttribute("findMovie", findMovie);
+
+
 
 		model.addAttribute("findMovie", findMovie);
 		System.out.println(findMovie);
+
 
 		return "movie-index";
 	}
@@ -109,6 +115,10 @@ public class MovieController {
 	@GetMapping("/movie/reviews/")
 	public String movieReviews( Model model) { 
 		
+
+		
+		//Working on a review page
+
 		//System.out.println(tittle);
 		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
 		Iterable<Review> reviews = reviewRepository.findAll();
