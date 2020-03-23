@@ -107,9 +107,9 @@ public class MovieController {
 
 	}
 	@GetMapping("/movie/reviews/")
-	public String movieReviews(@RequestParam("tittle") String tittle, Model model) { 
+	public String movieReviews( Model model) { 
 		
-		System.out.println(tittle);
+		//System.out.println(tittle);
 		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
 		Iterable<Review> reviews = reviewRepository.findAll();
 		
