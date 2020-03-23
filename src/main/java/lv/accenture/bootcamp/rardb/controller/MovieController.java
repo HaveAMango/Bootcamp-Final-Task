@@ -35,14 +35,19 @@ public class MovieController {
 
 	@GetMapping("/movie/search")
 	public String movieFindByTitle(@RequestParam String Title, Model model) {
+		Title = search.checkTitle(Title);
+		
 		List<SearchResult> findMovie = search.getFilm(Title);
-		// System.out.println("movie search cont" + findMovie.toString()); //remove sout
-		// , or you could get null pointer exeption if movie doesn`t found
+
+
 		model.addAttribute("findMovie", findMovie);
+		System.out.println(findMovie);
+
 		return "movie-index";
 	}
 	
 	
+
 
 	@GetMapping("/movies/main")
 	public String topTenList(Model model) {

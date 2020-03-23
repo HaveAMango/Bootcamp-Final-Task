@@ -15,6 +15,8 @@ public class SearchResult {
 	private String Poster;
 
 	private double imdbRating;
+	
+
 
 	public String getTitle() {
 		return Title;

@@ -64,14 +64,22 @@
 		<!-- a relaod button -->
 		
 		
-		<!-- add a review button -->
+		<!-- add a review button Should make it with limited permitions-->
 		<div>
+
 		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
 				the page</a>
+
 					</div>
 	
 		
 		
+		<!-- a user button -->
+		<div>
+		<a th:if="${loggedIn}" th:href="@{/user}" class="btn btn-outline-primary">My account</a>
+					</div>
+	
+		<div th:text="${loggedIn}"></div>
 		
     </div>
 </body>
