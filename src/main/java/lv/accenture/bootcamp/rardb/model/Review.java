@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 @Entity
@@ -16,6 +18,8 @@ public class Review implements Serializable {
 	private Long reviewId;
 	
 	@Valid
+//	@ManyToOne
+//	@JoinColumn(name="imdb")
 	private String imdbId;
 
 	private Integer rating;

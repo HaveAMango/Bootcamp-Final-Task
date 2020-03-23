@@ -9,7 +9,7 @@
     <div class="container">
         <h1>RARDB</h1>
 		
-		<form action="#" th:action="@{/movie/reviews/{imdbId}(imdbId=${movie.imdbId})}"
+		<form action="#" th:action="@{/movie/reviews/}"
 		
 			th:object="${review}" method="get">
 			
@@ -17,17 +17,22 @@
 			
 			
 			
-			<div class="overflow-auto" th:each="review: ${review}">
-			<div class="overflow-auto" th:text="${review.userReview}"/>
 			
-			
+			<!-- <div class="overflow-auto" th:each="review: ${reviews}">
+			<div class="overflow-auto" th:text="${review.userReview}"/>  -->
+<table class="table table-striped">			
+			<tr>
+					<th>Id</th>
+				
+			<tr th:each="review: ${reviews}">
+					<td th:text="${review.userReview}" /> 
 			
 
-			
+			</table>
 
     </div>
-    </div>
-	</form>
-	</div>
+ <!-- 	  </div>
+	<!-- 	</form>-->
+	<!-- </div>-->
 </body>
 </html>

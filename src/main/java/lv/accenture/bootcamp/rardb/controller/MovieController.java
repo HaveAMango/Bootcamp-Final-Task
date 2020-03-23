@@ -47,12 +47,13 @@ public class MovieController {
 	@GetMapping("/movies/main")
 	public String topTenList(Model model) {
 
-		// Add only top 10 movies
-		List<Movie> movieList = (List<Movie>) movieRepository.findAll();
 		
+		List<Movie> movieList = (List<Movie>) movieRepository.findTopTen();
 		
 		Iterable<Movie> movies = movieRepository.findTopTen();
+		
 		model.addAttribute("moviesTop", movies);
+		
 
 		return "main";
 	}
@@ -100,11 +101,17 @@ public class MovieController {
 		return "redirect:/movies/main";
 
 	}
-	@GetMapping("/movie/reviews/{imdbId}")
-	public String movieReviews(@PathVariable String imdbId, Model model) { 
-		System.out.println("in the review page " + imdbId);
-		List<Review> review = reviewRepository.findByIbmId(imdbId);
-		model.addAttribute("review", review);
+	@GetMapping("/movie/reviews/")
+	public String movieReviews(@RequestParam("tittle") String tittle, Model model) { 
+		
+		System.out.println(tittle);
+		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
+		Iterable<Review> reviews = reviewRepository.findAll();
+		
+		System.out.println(reviews.toString());
+		
+		model.addAttribute("reviews", reviews);
+		//model.addAttribute("imdbId", imdbId);
 		
 	return"reviews";
 	}

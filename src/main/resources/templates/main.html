@@ -37,12 +37,12 @@
 					
 				<tr th:each="movie: ${moviesTop}">
 					<td th:text="${movie.ranking}" /> 
-					<td th:text="${movie.tittle}" />
+					<td th:text="${movie.tittle}" name="tittle" id="tittle"/>
 					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
 					<td th:text="${movie.averageRating}" />
 					
 					
-					<td><a th:href="@{/movie/reviews/{imdbId}(imdbId=${movie.imdbId})}"
+					<td><a th:href="@{/movie/reviews/}"
 						class="btn btn-outline-primary"> <span>Reviews</span>
 					
 					

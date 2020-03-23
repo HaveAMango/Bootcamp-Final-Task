@@ -13,7 +13,7 @@ import lv.accenture.bootcamp.rardb.model.Review;
 @Repository
 public interface ReviewRepository extends CrudRepository<Review, Long> {
 
-	@Query("Select c FROM Review c Where c.imdbId LIKE %:id%")
+	@Query("Select c FROM Review c Where c.imdbId=:id")
 	List<Review> findByIbmId(@Param(value = "id") String id);
 
 	@Query("Select c FROM Review c Where c.imdbId LIKE %:id% AND c.userId LIKE %:userId%")

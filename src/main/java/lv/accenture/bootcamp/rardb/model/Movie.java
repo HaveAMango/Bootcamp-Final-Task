@@ -30,7 +30,7 @@ public class Movie implements Serializable {
 	private String poster;
 	private String review;
 
-//	@OneToMany(mappedBy = "imdbId", fetch = FetchType.LAZY)
+//@OneToMany(mappedBy = "imdbId", fetch = FetchType.LAZY)
 	// private List<Review> reviews;
 
 	@Column(name = "rating", columnDefinition = "int default 0")
