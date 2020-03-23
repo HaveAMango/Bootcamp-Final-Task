@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
+
 //@Service
 //public class MyUserDetailsService implements UserDetailsService {
 //
@@ -34,7 +34,6 @@ import org.springframework.transaction.annotation.Transactional;
 //                user.getActive(), true, true, true);
 //    }
 //}
-=======
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -59,4 +58,4 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 }
 
->>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
+

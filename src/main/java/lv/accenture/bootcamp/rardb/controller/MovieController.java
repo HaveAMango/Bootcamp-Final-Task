@@ -38,26 +38,23 @@ public class MovieController {
 		Title = search.checkTitle(Title);
 		
 		List<SearchResult> findMovie = search.getFilm(Title);
-<<<<<<< HEAD
+
 		// System.out.println("movie search cont" + findMovie.toString()); //remove sout
 		// , or you could get null pointer exeption if movie doesn`t found
 		model.addAttribute("findMovie", findMovie);
-=======
+
 
 
 		model.addAttribute("findMovie", findMovie);
 		System.out.println(findMovie);
 
->>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
+
 		return "movie-index";
 	}
 	
 	
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
 	@GetMapping("/movies/main")
 	public String topTenList(Model model) {
 
@@ -118,11 +115,10 @@ public class MovieController {
 	@GetMapping("/movie/reviews/")
 	public String movieReviews( Model model) { 
 		
-<<<<<<< HEAD
+
 		
 		//Working on a review page
-=======
->>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
+
 		//System.out.println(tittle);
 		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
 		Iterable<Review> reviews = reviewRepository.findAll();

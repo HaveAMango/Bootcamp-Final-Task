@@ -14,14 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-<<<<<<< HEAD
-//import org.json.JSONObject;
-=======
-
-
-
->>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
-
 @Service
 public class OmdbAPIService {
 

@@ -14,9 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-<<<<<<< HEAD
+
 import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.Id;
 //
 //@Entity
 //@Table(name = "users")
@@ -131,7 +130,7 @@ import org.springframework.data.annotation.Id;
 //
 //    
 //}
-=======
+
 
 
 @Entity
@@ -246,4 +245,4 @@ public class User {
     
 }
 
->>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
+
