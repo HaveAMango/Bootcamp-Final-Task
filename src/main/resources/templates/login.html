@@ -1,41 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>RARDB3 Log in/ Sign up</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<title>RARDB3 Log in/ Sign up</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-
-        <h1>TOP RATED MOVIES</h1>
-		<p>Top 10 movies as rated by RARDB users</p>
-		
-		<!-- table with top 10 -->
-		<h3>Showing Top 10 Titles</h3>
-        <table class="table table-striped">
-       
-       <tr>
-       <th>#</th>
-	   <th>Tile</th>
-       <th>Title</th>
-       <th>Rating</th>
-	   <th>Your Rating</th>
-	   <th>Add a Review</th>
-       
-	   <!-- need to replace cats by a movie/film object -->
-        <tr th:each="cats: ${cats}">
-        <td th:text="${cats.id}"/>
-        <td th:text="${cats.nickname}"/>
-        <td>
-		
-		<!-- a relaod button -->
-		
-		
-
-		<!-- add a review button -->
-		<!-- log in option -->
-		<!--  search -->
-    </div>
+	<div class="container">
+		<form th:action="@{/login}" class="form-signin" method="post">
+			<div class="form-group col-md-8">
+					<br></br>
+				<input type="text" id="username" name="myusername" class="form-control">
+					<br></br>
+				<input type="password" id="password" name="password" class="form-control">
+					<br></br>
+					<div id="errors" th:if="${(param.error != null)}">Login or password is incorrect</div>
+					<br></br>
+				<button type="Submit" name="Submit" class="btn btn-primary" value="Login" th:text="Login"></button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

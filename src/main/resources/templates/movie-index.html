@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-		<h3 class="headerPadding">
+		<h3>
 		 Movie search page
 		 
 		
@@ -20,8 +20,12 @@
 		  <small class="text-muted"> to write a review</small>
 		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
 		</h3> 
-		<!--  search -->
+		<!--  search -->	
+		 <form th:action="@{/movie/search}" method="get">
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
 
+<<<<<<< HEAD
 	    <table class="table table-bordered">
 			<tr class = "table-active">
 				<th>Title</th>
@@ -48,6 +52,44 @@
 	  			</tr>
 			</tr>
 	    </table>
+=======
+		</form>
+		
+		<div th:if="${not #lists.isEmpty(findMovie)}">
+		    <table class="table table-bordered">
+				<tr class = "table-active">
+					<th>Title</th>
+					<th>Year</th>		
+					<th>imdbID </th>
+					<th>Type</th>
+					<th>Poster</th>
+				</tr>
+				<tr>
+				    <tr th:each="movie: ${findMovie}">
+				        <td th:text="${movie.Title}"/>
+				        <td th:text="${movie.Year}"/>
+				   		<td th:text="${movie.imdbID}"/>
+				        <td th:text="${movie.Type}"/>
+				        <td> 
+				        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
+				        </td>
+				       
+			 <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
+					</a> </td>
+				        
+		  			</tr>
+				</tr>
+		    </table>
+		       </div>
+	    <div th:unless="${not #lists.isEmpty(findMovie)}">
+	    	<div class="card">
+	        <div class="card-body">
+	           No movie found. Please try again with different title.
+	       </div>
+	    </div>
+	    </div>
+
+>>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686
     </div>
 		
 

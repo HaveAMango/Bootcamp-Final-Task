@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 //@Service
 //public class MyUserDetailsService implements UserDetailsService {
 //
@@ -33,3 +34,29 @@ import org.springframework.transaction.annotation.Transactional;
 //                user.getActive(), true, true, true);
 //    }
 //}
+=======
+
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserService userService;
+
+    @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+    	System.out.println("User details service called: " + userName);
+        User user = userService.findUserByUserName(userName);
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("USER"));        
+        return buildUserForAuthentication(user, authorities);
+    }
+
+
+    private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
+        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
+                true, true, true, true, authorities);
+    }
+}
+
+>>>>>>> 8600fa8ab9b40f51fd49783ff76d273612e4b686

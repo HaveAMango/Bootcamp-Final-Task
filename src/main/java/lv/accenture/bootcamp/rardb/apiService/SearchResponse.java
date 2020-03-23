@@ -8,7 +8,7 @@ public class SearchResponse {
 
     private Long totalResults;
 
-    private String Response;
+    private Boolean Response;
 
     private List<SearchResult> Search;
 
@@ -19,6 +19,14 @@ public class SearchResponse {
 	@Override
 	public String toString() {
 		return "SearchResponse [totalResults=" + totalResults + ", Response=" + Response + ", Search=" + Search + "]";
+	}
+
+	public Long getTotalResults() {
+		return totalResults;
+	}
+
+	public Boolean getResponse() {
+		return Response;
 	}
 
     
