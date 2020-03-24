@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RARDB3</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>RARDB</h1>
+		
+        
+		<!--  search -->
+				<form th:action="@{/movie/search}" method="get">
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
+
+		</form>
+		
+		<!-- table with top 10 -->
+
+<!-- add if - was user loged in or not and depending on that the add review button is active or not -->
+		 <!-- <div th:if="${not #lists.isEmpty(movies)}">  -->
+
+
+			<table class="table table-striped">
+
+				<tr>
+					<th>Rank</th>
+					<th>Tittle</th>
+					<th>Poster</th>
+					<th>RDMB Rating</th>
+					<th>IDMB Rating</th>
+					<th>Rate the Movie</th>
+					<th>Read the reviews</th>
+					
+					
+				<tr th:each="movie: ${moviesTop}">
+					<td th:text="${movie.ranking}" /> 
+					<td th:text="${movie.tittle}" name="tittle" id="tittle"/>
+					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
+					<td th:text="${movie.averageRating}" />
+					
+					
+					<td><a th:href="@{/movie/reviews/}"
+						class="btn btn-outline-primary"> <span>Reviews</span>
+					
+					
+					<!-- <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
+					</a> </td> -->
+
+
+					
+				</tr>
+
+			</table>
+		 <!-- </div> 
+		<div th:unless="${not #lists.isEmpty(movies)}">
+			<div class="card">
+				<div class="card-body">No movie ratings available at the moment!</div>
+
+			</div>
+		</div>  -->
+					
+		<!-- a relaod button -->
+		
+
+		
+		<!-- add a review button Should make it with limited permitions-->
+		<div>
+
+		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
+				the page</a>
+
+					</div>
+	
+		
+
+		
+		<!-- a user button -->
+		<div>
+
+		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
+				the page</a>
+					</div>
+	
+		
+		
+
+		<a th:if="${loggedIn}" th:href="@{/user}" class="btn btn-outline-primary">My account</a>
+					</div>
+	
+		<div th:text="${loggedIn}"></div>
+
+		
+    </div>
+</body>
+</html>
