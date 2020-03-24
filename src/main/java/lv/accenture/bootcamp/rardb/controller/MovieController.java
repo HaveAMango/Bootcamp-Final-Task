@@ -37,7 +37,9 @@ public class MovieController {
 	public String movieFindByTitle(@RequestParam String Title, Model model) {
 		Title = search.checkTitle(Title);
 		
+
 		List<SearchResult> findMovie = search.getFilmList(Title);
+
 
 		// System.out.println("movie search cont" + findMovie.toString()); //remove sout
 		// , or you could get null pointer exeption if movie doesn`t found
