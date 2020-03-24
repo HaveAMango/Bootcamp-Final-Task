@@ -10,59 +10,14 @@
 		<h3>
 		 Movie search page
 		 
-		
-		 <form th:action="@{/movie/search}" method="get">
-	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
-	    	<input type="submit" value="Search"/>
-
-		</form>
-<<<<<<< HEAD
 		</h3>		
-		  <small class="text-muted"> to write a review</small>
-		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
-
-
-
-=======
-				
-		  <small class="text-muted"> to write a review</small>
-		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
-		</h3> 
-		<!--  search -->	
 		 <form th:action="@{/movie/search}" method="get">
 	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
 	    	<input type="submit" value="Search"/>
 
-
-	    <table class="table table-bordered">
-			<tr class = "table-active">
-				<th>Title</th>
-				<th>Year</th>		
-				<th>imdbID </th>
-				<th>Type</th>
-				<th>Poster</th>
-				<th th:if="${loggedIn}">Add a review</th>
-				
-			</tr>
-			<tr>
-			    <tr th:each="movie: ${findMovie}">
-			        <td th:text="${movie.Title}" />
-			        <td th:text="${movie.Year}"/>
-			   		<td th:text="${movie.imdbID}"/>
-			        <td th:text="${movie.Type}"/>
-			        <td> 
-			        	<img th:src="${movie.Poster}" style="height:150px;"/>		        
-			        </td>
-			       
-			        <td><a th:if="${loggedIn}" th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
-					</a> </td>
-				 
-	  			</tr>
-			</tr>
-	    </table>
-
 		</form>
->>>>>>> f8c3078c8efa262a0f12e31a8999e5fbe2ee9b1f
+		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
+
 		
 		<div th:if="${not #lists.isEmpty(findMovie)}">
 		    <table class="table table-bordered">
@@ -72,10 +27,8 @@
 					<th>imdbID </th>
 					<th>Type</th>
 					<th>Poster</th>
-<<<<<<< HEAD
 					<th>Action</th>
-=======
->>>>>>> f8c3078c8efa262a0f12e31a8999e5fbe2ee9b1f
+
 				</tr>
 				<tr>
 				    <tr th:each="movie: ${findMovie}">
@@ -87,22 +40,18 @@
 				        	<img th:src="${movie.Poster}"/ style="height:150px;">		        
 				        </td>
 				       
-<<<<<<< HEAD
+
 			 <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Add review</span>
-=======
-			 <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
->>>>>>> f8c3078c8efa262a0f12e31a8999e5fbe2ee9b1f
-					</a> </td>
+
 				        
 		  			</tr>
 				</tr>
-<<<<<<< HEAD
+
 		    </table> 
 		       </div> 
-=======
-		    </table>
+
 		       </div>
->>>>>>> f8c3078c8efa262a0f12e31a8999e5fbe2ee9b1f
+
 	    <div th:unless="${not #lists.isEmpty(findMovie)}">
 	    	<div class="card">
 	        <div class="card-body">
