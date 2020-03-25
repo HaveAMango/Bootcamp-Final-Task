@@ -27,11 +27,38 @@
 						<label for="rating" class="col-form-label">Rate the movie:</label><br>
 						<span th:if="${#fields.hasErrors('userReview')}" th:errors="*{userReview}" class="text-danger"/><br>
 
-					<input type="number" th:field="*{rating}" class="form-control"
-						id="rating">
-						
-					<span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="text-danger"/><br>
-					<label for="userId" class="col-form-label">Write ayour user name:</label><br>
+		 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option1" value="1" checked>
+         <label class="btn btn-secondary active" for="option1">1</label>
+        
+		
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option2" value="2">
+       <label class="btn btn-secondary active" for="option2">2</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option3" value="3">
+       <label class="btn btn-secondary active" for="option3">3</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option4" value="4">
+       <label class="btn btn-secondary active" for="option4">4</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option5" value="5">
+        <label class="btn btn-secondary active" for="option5">5</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option6" value="6">
+       <label class="btn btn-secondary active" for="option6">6</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option7" value="7">
+        <label class="btn btn-secondary active" for="option7">7</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option8" value="8">
+       <label class="btn btn-secondary active" for="option8">8</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option9" value="9">
+        <label class="btn btn-secondary active" for="option9">9</label>
+		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option10" value="10">
+        <label class="btn btn-secondary active" for="option10">10</label>
+		
+			</div> 
+				<br>
+		
+					
+					<label for="userId" class="col-form-label">Write your user name:</label><br>
+					
 					<input type="text" th:field="*{userId}" class="form-control" id="userId"> 
 					
 						
