@@ -30,6 +30,7 @@ public class OmdbAPIService {
 	}
 	public String getApiResponse(String requestedFilm, String searchType) {	
 		try {
+
 			URL url = new URL(requestUrl + searchType + requestedFilm);
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 			urlConnection.setRequestMethod("GET");
@@ -48,6 +49,7 @@ public class OmdbAPIService {
 
 			String jsonResponse = sb.toString();
 			bufferedReader.close();
+
 			return jsonResponse;
 
 		} catch (Exception e) {

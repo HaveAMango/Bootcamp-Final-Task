@@ -35,9 +35,11 @@ public class MovieController {
 
 	@GetMapping("/movies/search")
 	public String movieFindByTitle(@RequestParam String Title, Model model) {
+
 		List<SearchResult> findMovie = search.getFilmList(Title);
 		model.addAttribute("findMovie", findMovie);
 		System.out.println(findMovie);
+
 		return "movie-index";
 	}
 	
