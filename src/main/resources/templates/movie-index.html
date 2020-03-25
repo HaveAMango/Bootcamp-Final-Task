@@ -27,7 +27,7 @@
 					<th>imdbID </th>
 					<th>Type</th>
 					<th>Poster</th>
-					<th>Action</th>
+					<th th:if="${loggedIn}">Action</th>
 
 				</tr>
 				<tr>
@@ -41,7 +41,7 @@
 				        </td>
 				       
 
-			 <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Add review</span>
+			 <td th:if="${loggedIn}"><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Add review</span>
 
 				        
 		  			</tr>
