@@ -26,7 +26,7 @@ public class Movie implements Serializable {
 
 	private Long averageRating;
 	private Integer ranking;
-	private String tittle;
+	private String title;
 	private String poster;
 	private String review;
 
@@ -60,12 +60,12 @@ public class Movie implements Serializable {
 		this.ranking = ranking;
 	}
 
-	public String getTittle() {
-		return tittle;
+	public String gettitle() {
+		return title;
 	}
 
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void settitle(String title) {
+		this.title = title;
 	}
 
 	public String getPoster() {
@@ -83,12 +83,12 @@ public class Movie implements Serializable {
 	}
 
 
-	public Movie(@Valid String imdbId, Long rating, Integer ranking, String tittle, String poster, String review) {
+	public Movie(@Valid String imdbId, Long rating, Integer ranking, String title, String poster, String review) {
 		super();
 		this.imdbId = imdbId;
 		this.averageRating = rating;
 		this.ranking = ranking;
-		this.tittle = tittle;
+		this.title = title;
 		this.poster = poster;
 		this.review = review;
 	}
@@ -99,7 +99,7 @@ public class Movie implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movie [imdbId=" + imdbId + ", rating=" + averageRating + ", ranking=" + ranking + ", tittle=" + tittle
+		return "Movie [imdbId=" + imdbId + ", rating=" + averageRating + ", ranking=" + ranking + ", title=" + title
 				+ ", poster=" + poster + "]";
 	}
 

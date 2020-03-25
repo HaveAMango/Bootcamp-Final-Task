@@ -20,6 +20,7 @@ public class OmdbAPIService {
 	private String requestUrl = "http://www.omdbapi.com/?apikey=fe474bfb";
 	private String searchByTitle = "&t=";
 	private String searchGeneral = "&s=";
+	private String searchById = "&i=";
 	private List<SearchResult> searchList = null;
 	
 	public String checkTitle(String Title) {
@@ -62,10 +63,8 @@ public class OmdbAPIService {
 		requestedFilm = checkTitle(requestedFilm);
 		Gson gson = new Gson();
 		if (requestedFilm.length() <=2) {
-			String jsonResponse = getApiResponse(requestedFilm, searchByTitle);
-			SearchResult searchResult = gson.fromJson(jsonResponse, SearchResult.class);
+			SearchResult searchResult = getFilmByTitle(requestedFilm,gson);
 			searchList.add(searchResult);
-			
 			return searchList;
 		} else {
 		String jsonResponse = getApiResponse(requestedFilm, searchGeneral);
@@ -75,6 +74,14 @@ public class OmdbAPIService {
 		}
 		return searchList;
 		}
+
+	}
+	
+	
+	public SearchResult getFilmByTitle(String requestedFilm, Gson gson) {
+			String jsonResponse = getApiResponse(requestedFilm, searchByTitle);
+			SearchResult searchResult = gson.fromJson(jsonResponse, SearchResult.class);
+			return searchResult;
 
 	}
 
