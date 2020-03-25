@@ -35,7 +35,7 @@
 					<th>Read the reviews</th>
 					
 					
-				<tr th:each="movie: ${moviesTop}">
+				<tr th:each="movie: ${movies}">
 					<td th:text="${movie.ranking}" /> 
 					<td th:text="${movie.tittle}" name="tittle" id="tittle"/>
 					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
