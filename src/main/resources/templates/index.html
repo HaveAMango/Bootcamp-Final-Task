@@ -1,0 +1,54 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RARDB3</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>RARDB</h1>
+
+        
+		
+		<!-- a relaod button -->
+		<!-- table with top 10 -->
+		<!-- add a review button -->
+		<!-- log in option -->
+		<!--  search -->
+		
+
+
+		 <form th:action="@{/movies/search}" method="get">
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
+
+		</form>
+
+		
+
+		
+    </div>
+<div class="container">
+  <!-- Content here -->
+
+		
+  <!-- log in option -->
+		
+		<a th:href="@{/login}"class="btn btn-outline-primary">Log-in to access more features!</a>
+
+
+		</div>
+		<!-- Guest in option -->
+		<div>
+		<a th:href="@{/main}"class="btn btn-outline-primary">or continue as a guest...</a>
+		</div>
+		
+	<!-- Registration in option -->
+			
+		<div>
+		<a th:href="@{/registration}"class="btn btn-outline-primary">Register to access more features!</a>
+		</div>
+
+</body>
+</html>

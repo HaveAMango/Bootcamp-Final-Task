@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RARDB3</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>RARDB</h1>
+		
+		<form action="#" th:action="@{/movies/reviews/}"
+		
+			th:object="${review}" method="get">
+			
+			
+			
+			
+			
+			
+			<!-- <div class="overflow-auto" th:each="review: ${reviews}">
+			<div class="overflow-auto" th:text="${review.userReview}"/>  -->
+<table class="table table-striped">			
+			<tr>
+					<th>Id</th>
+				
+			<tr th:each="review: ${reviews}">
+					<td th:text="${review.userReview}" /> 
+			
+
+			</table>
+
+    </div>
+ <!-- 	  </div>
+	<!-- 	</form>-->
+	<!-- </div>-->
+</body>
+</html>
