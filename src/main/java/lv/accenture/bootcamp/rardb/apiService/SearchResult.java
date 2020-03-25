@@ -37,6 +37,34 @@ public class SearchResult {
 	public String getPoster() {
 		return Poster;
 	}
+	
+	
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setTitle(String title) {
+		Title = title;
+	}
+
+	public void setYear(String year) {
+		Year = year;
+	}
+
+	public void setImdbID(String imdbID) {
+		this.imdbID = imdbID;
+	}
+
+	public void setType(String type) {
+		Type = type;
+	}
+
+	public void setPoster(String poster) {
+		if (poster != "N/A") {
+		Poster = poster;
+		}
+	}
 
 	@Override
 	public String toString() {

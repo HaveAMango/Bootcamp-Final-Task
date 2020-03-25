@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import java.net.URL;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -18,22 +18,20 @@ import com.google.gson.Gson;
 public class OmdbAPIService {
 
 	private String requestUrl = "http://www.omdbapi.com/?apikey=fe474bfb";
+	private String searchByTitle = "&t=";
+	private String searchGeneral = "&s=";
+	private List<SearchResult> searchList = null;
 	
 	public String checkTitle(String Title) {
 		if (Title.contains(" ")) {
 			Title = Title.replaceAll(" ", "&");
 		}
-		if (Title.contains("the")) {
-			Title = Title.replaceAll("the", "");
-		}
-		System.out.println("changing Title" + Title);
 		return Title;
 	}
-	
-	public List<SearchResult> getFilm(String requestedFilm) {
+	public String getApiResponse(String requestedFilm, String searchType) {	
 		try {
 			System.out.println("api received " + requestedFilm);
-			URL url = new URL(requestUrl + "&s=" + requestedFilm);
+			URL url = new URL(requestUrl + searchType + requestedFilm);
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 			urlConnection.setRequestMethod("GET");
 			urlConnection.setReadTimeout(3000);
@@ -51,22 +49,33 @@ public class OmdbAPIService {
 
 			String jsonResponse = sb.toString();
 			bufferedReader.close();
-
-			Gson gson = new Gson();
-			SearchResponse response = gson.fromJson(jsonResponse, SearchResponse.class);
-			List<SearchResult> searchList = null;
-			if (response.getResponse()) {
-				searchList = response.getSearch();
-				System.out.println(response);
-				System.out.println(searchList);
-				System.out.println("size: " + searchList.size());
-
-			}
-			return searchList;
+			System.out.println(jsonResponse);
+			return jsonResponse;
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public List<SearchResult> getFilmList(String requestedFilm) {
+		searchList = new ArrayList<SearchResult>();
+		requestedFilm = checkTitle(requestedFilm);
+		Gson gson = new Gson();
+		if (requestedFilm.length() <=2) {
+			String jsonResponse = getApiResponse(requestedFilm, searchByTitle);
+			SearchResult searchResult = gson.fromJson(jsonResponse, SearchResult.class);
+			searchList.add(searchResult);
+			
+			return searchList;
+		} else {
+		String jsonResponse = getApiResponse(requestedFilm, searchGeneral);
+		SearchResponse response = gson.fromJson(jsonResponse, SearchResponse.class);
+		if (response.getResponse()) {
+			searchList = response.getSearch();
+		}
+		return searchList;
+		}
+
 	}
 
 }
