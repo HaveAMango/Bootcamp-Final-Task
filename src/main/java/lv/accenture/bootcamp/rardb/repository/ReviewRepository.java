@@ -21,14 +21,19 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
 	default Long calculateAverageRating(List<Review> movieRatingList) {
 		Integer ratingSum = 0;
-		Integer ratingCount = 0;
+		Integer ratingCount = movieRatingList.size()+1;
 		Long averageRating;
 
+		System.out.println("list size: " + movieRatingList.size());
 		if (movieRatingList.size() > 0) {
 			for (int i = 0; i < movieRatingList.size(); i++) {
+				
 				ratingSum = ratingSum + movieRatingList.get(i).getRating();
-				ratingCount = i + 1;
+				//ratingCount = i;
+				System.out.println("list avg value: " + movieRatingList.get(i).toString());
+				
 			}
+			
 			averageRating = (long) (ratingSum / ratingCount);
 		} else {
 			averageRating = 0L;

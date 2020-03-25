@@ -26,7 +26,7 @@ public class IndexController {
 		System.out.println("Logged in: " + loggedIn);
 		model.addAttribute("loggedIn", loggedIn);
 		System.out.println(auth);
-		return "main";
+		return "redirect:/movies/main";
 	}
 	
 	private boolean hasUserRole(Collection<? extends GrantedAuthority> authorities) {

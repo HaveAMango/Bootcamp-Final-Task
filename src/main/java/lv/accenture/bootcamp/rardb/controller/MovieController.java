@@ -33,7 +33,7 @@ public class MovieController {
 	@Autowired
 	ReviewRepository reviewRepository;
 
-	@GetMapping("/movie/search")
+	@GetMapping("/movies/search")
 	public String movieFindByTitle(@RequestParam String Title, Model model) {
 		Title = search.checkTitle(Title);
 		
@@ -62,6 +62,7 @@ public class MovieController {
 
 		
 		List<Movie> movieList = (List<Movie>) movieRepository.findTopTen();
+		movieRepository.addRanking(movieList);
 		
 		Iterable<Movie> movies = movieRepository.findTopTen();
 		
@@ -90,7 +91,7 @@ public class MovieController {
 	}
 
 	
-	@PostMapping("/movie/movie-add/{id}")
+	@PostMapping("/movies/movie-add/{id}")
 	public String addReview(@PathVariable String id, @Valid Review reviewAdd, BindingResult bindingResult) {
 
 		reviewAdd.setImdbId(id);
@@ -101,6 +102,7 @@ public class MovieController {
 		movieToReview.setImdbId(id);
 
 		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
+		System.out.println("list: " + movieRatingList.toString());
 
 		Long averageRating = reviewRepository.calculateAverageRating(movieRatingList);
 
@@ -114,8 +116,8 @@ public class MovieController {
 		return "redirect:/movies/main";
 
 	}
-	@GetMapping("/movie/reviews/")
-	public String movieReviews( Model model) { 
+	@GetMapping("/movies/reviews/{id}")
+	public String movieReviews(@PathVariable String id, Model model) { 
 		
 
 		
@@ -123,7 +125,8 @@ public class MovieController {
 
 		//System.out.println(tittle);
 		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
-		Iterable<Review> reviews = reviewRepository.findAll();
+		//Iterable<Review> reviews = reviewRepository.findAll();
+		Iterable<Review>reviews = reviewRepository.findByIbmId(id);
 		
 		System.out.println(reviews.toString());
 		

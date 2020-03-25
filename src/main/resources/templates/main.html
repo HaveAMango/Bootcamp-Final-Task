@@ -11,7 +11,7 @@
 		
         
 		<!--  search -->
-				<form th:action="@{/movie/search}" method="get">
+				<form th:action="@{/movies/search}" method="get">
 	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
 	    	<input type="submit" value="Search"/>
 
@@ -42,12 +42,12 @@
 					<td th:text="${movie.averageRating}" />
 					
 					
-					<td><a th:href="@{/movie/reviews/}"
-						class="btn btn-outline-primary"> <span>Reviews</span>
+					<!-- <td><td><a th:href="@{/movies/reviews/}"
+						class="btn btn-outline-primary"> <span>Reviews</span>-->
 					
 					
-					<!-- <td><a th:href="@{/findMovie/addReview/{id}(id=${movie.imdbID})}" class="btn btn-outline-primary"> <span>Edit</span>
-					</a> </td> -->
+					 <td><a th:href="@{/movies/reviews/{id}(id=${movie.imdbId})}" class="btn btn-outline-primary"> <span>Reviews</span>
+					</a> </td> 
 
 
 					

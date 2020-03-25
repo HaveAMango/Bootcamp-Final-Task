@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import lv.accenture.bootcamp.rardb.model.Movie;
+import lv.accenture.bootcamp.rardb.model.Review;
 
 @Repository
 public interface MovieRepository extends CrudRepository<Movie, Long> {
@@ -31,6 +32,12 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 	@Query(value="SELECT * FROM Movie ORDER BY average_rating DESC LIMIT 10", nativeQuery = true)
 			
 	Iterable<Movie> findTopTen();
+
+	default void addRanking(List<Movie> movieRatingList) {
+		for ( int i=0; i<movieRatingList.size(); i++) {
+			movieRatingList.get(i).setRanking(i+1);
+		}
+	};
 	
 	
 
