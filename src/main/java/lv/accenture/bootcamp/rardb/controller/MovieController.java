@@ -112,8 +112,8 @@ public class MovieController {
 		return "redirect:/movies/main";
 
 	}
-	@GetMapping("/movie/reviews/")
-	public String movieReviews( Model model) { 
+	@GetMapping("/movie/reviews/{id}")
+	public String movieReviews(@PathVariable String id, Model model) { 
 		
 
 		
@@ -121,7 +121,8 @@ public class MovieController {
 
 		//System.out.println(tittle);
 		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
-		Iterable<Review> reviews = reviewRepository.findAll();
+		//Iterable<Review> reviews = reviewRepository.findAll();
+		Iterable<Review>reviews = reviewRepository.findByIbmId(id);
 		
 		System.out.println(reviews.toString());
 		
