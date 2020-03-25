@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import lv.accenture.bootcamp.rardb.login.LoggedInService;
 import lv.accenture.bootcamp.rardb.login.User;
@@ -26,7 +27,7 @@ public class IndexController {
 	
 	@GetMapping("/main")
 	public String toMain(Model model) {
-		model.addAttribute("loggedIn", loggedInService.loggedIn());
+		System.out.println(loggedInService.getCurrentUser());
 		return "redirect:/movies/main";
 	}
 	
@@ -34,8 +35,9 @@ public class IndexController {
 
 	@GetMapping("/user")
 	public String user(Model model) {
-		model.addAttribute("user");
+		model.addAttribute("user", loggedInService.getCurrentUser());
 		return "user";
 	}
+	
 
 }

@@ -62,7 +62,7 @@ public class MovieController {
 		movieRepository.addRanking(movieList);
 		
 		Iterable<Movie> movies = movieRepository.findTopTen();
-		
+		model.addAttribute("loggedIn", loggedInService.loggedIn());
 		model.addAttribute("moviesTop", movies);
 		
 

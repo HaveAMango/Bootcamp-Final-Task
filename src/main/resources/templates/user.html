@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User</title>
+    <title>User Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Hello Web!</h1>
-        <a href="/cats">Cats here!</a>
-    </div>
+		<h3>
+		 User page
+		 
+		</h3>		
+		 <form th:action="@{/user}" method="get">
+	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
+	    	<input type="submit" value="Search"/>
+
+		</form>
+		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
+
+		
+		<div>
+		    <table class="table table-bordered">
+				<tr class = "table-active">
+					<th>UserName</th>
+					<th>email</th>		
+					<th>name</th>
+					<th>lastName</th>
+					
+
+				</tr>
+				<tr>
+					<td th:text="${user.userName}" />
+					<td th:text="${user.email}" />
+					<td th:text="${user.name}" />
+					<td th:text="${user.lastName}" />
+				      
+				        
+		  		</tr>
+
+		    </table> 
+		       </div> 
+
+		       </div>
+
+
+		
+
 </body>
 </html>
