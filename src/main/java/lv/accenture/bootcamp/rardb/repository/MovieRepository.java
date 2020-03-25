@@ -33,7 +33,12 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 	Iterable<Movie> findTopTen();
 	
 	
-
+public default void addRanking(List<Movie> rankingMovies) {
+	
+	for (int i=0; i<rankingMovies.size(); i++) {
+	rankingMovies.get(i).setRanking(i+1);
+	}
+}
 
 	
 }

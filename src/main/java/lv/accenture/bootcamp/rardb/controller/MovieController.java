@@ -62,8 +62,11 @@ public class MovieController {
 
 		
 		List<Movie> movieList = (List<Movie>) movieRepository.findTopTen();
+		movieRepository.addRanking(movieList);
 		
 		Iterable<Movie> movies = movieRepository.findTopTen();
+		
+		
 		
 		model.addAttribute("moviesTop", movies);
 		
@@ -78,8 +81,10 @@ public class MovieController {
 		/// edit their choice
 		System.out.println("the imdb id" + id);
 
+		
 		Review reviewAdd = new Review();
 		reviewAdd.setImdbId(id);
+		
 
 		System.out.println("before get");
 
@@ -90,7 +95,7 @@ public class MovieController {
 	}
 
 	
-	@PostMapping("/movie/movie-add/{id}")
+	@PostMapping("/movies/movie-add/{id}")
 	public String addReview(@PathVariable String id, @Valid Review reviewAdd, BindingResult bindingResult) {
 
 		reviewAdd.setImdbId(id);
@@ -114,12 +119,12 @@ public class MovieController {
 		return "redirect:/movies/main";
 
 	}
-	@GetMapping("/movie/reviews/{id}")
+	@GetMapping("/movies/reviews/{id}")
 	public String movieReviews(@PathVariable String id, Model model) { 
 		
 
 		
-		//Working on a review page
+		
 
 		//System.out.println(tittle);
 		//List<Review> review1 = reviewRepository.findByIbmId(imdbId);
