@@ -14,7 +14,7 @@ public class SearchResult {
 
 	private String Poster;
 
-	private double imdbRating;
+	private String imdbRating;
 	
 
 
@@ -70,6 +70,14 @@ public class SearchResult {
 	public String toString() {
 		return "SearchResult [id=" + id + ", Title=" + Title + ", Year=" + Year + ", imdbID=" + imdbID + ", Type="
 				+ Type + ", Poster=" + Poster + "]";
+	}
+
+	public String getImdbRating() {
+		return imdbRating;
+	}
+
+	public void setImdbRating(String imdbRating) {
+		this.imdbRating = imdbRating;
 	}
 
 }

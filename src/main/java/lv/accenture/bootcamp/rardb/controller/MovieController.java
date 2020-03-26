@@ -59,13 +59,9 @@ public class MovieController {
 
 		
 		List<Movie> movieList = (List<Movie>) movieRepository.findTopTen();
-		movieRepository.addRanking(movieList);
-		System.out.println("movie list list repository" + movieList);
-		
+		movieRepository.addRanking(movieList);		
 		Iterable<Movie> movies = movieRepository.findTopTen();
-		
-		System.out.println("iterable  list list repository" + movies);
-		
+	
 		model.addAttribute("loggedIn", loggedInService.loggedIn());
 		model.addAttribute("movies", movies);
 		
@@ -78,12 +74,12 @@ public class MovieController {
 
 		/// should add an option that user can vote only once, afterwards he/she can
 		/// edit their choice
-		System.out.println("the imdb id" + id);
+
 
 		Review reviewAdd = new Review();
 		reviewAdd.setImdbId(id);
 
-		System.out.println("before get");
+
 
 		model.addAttribute("review", reviewAdd);
 
@@ -104,7 +100,7 @@ public class MovieController {
 //		movieToReview.setImdbId(id);
 
 		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
-		System.out.println("list: " + movieRatingList.toString());
+
 
 		Long averageRating = reviewRepository.calculateAverageRating(movieRatingList);
 
@@ -112,9 +108,7 @@ public class MovieController {
 
 		movieRepository.save(movieToReview);
 
-		System.out.println("After post");
-		System.out.println(movieToReview.toString());
-		System.out.println(reviewAdd.toString());
+
 		return "redirect:/movies/main";
 
 	}

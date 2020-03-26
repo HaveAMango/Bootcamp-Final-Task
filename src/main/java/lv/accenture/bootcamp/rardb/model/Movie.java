@@ -29,6 +29,8 @@ public class Movie implements Serializable {
 	private String title;
 	private String poster;
 	private String review;
+	private String imdbRating;
+	
 
 //@OneToMany(mappedBy = "imdbId", fetch = FetchType.LAZY)
 	// private List<Review> reviews;
@@ -101,6 +103,14 @@ public class Movie implements Serializable {
 	public String toString() {
 		return "Movie [imdbId=" + imdbId + ", rating=" + averageRating + ", ranking=" + ranking + ", title=" + title
 				+ ", poster=" + poster + "]";
+	}
+
+	public String getImdbRating() {
+		return imdbRating;
+	}
+
+	public void setImdbRating(String imdbRating) {
+		this.imdbRating = imdbRating;
 	}
 
 }

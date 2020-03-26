@@ -95,6 +95,7 @@ public class OmdbAPIService {
 		movie.setImdbId(imdbID);
 		movie.setPoster(searchResult.getPoster());
 		movie.setTitle(searchResult.getTitle());
+		movie.setImdbRating(searchResult.getImdbRating());
 		return movie;
 
 }
