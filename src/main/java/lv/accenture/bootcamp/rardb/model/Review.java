@@ -24,7 +24,12 @@ public class Review implements Serializable {
 
 	private Integer rating;
 	private String tittle;
+
+	//TODO: 1) it's better to use <textarea> form input tag (in HTML) for a big text
+	// 2) 10-line text paragraph causes MysqlDataTruncation: Data truncation: Data too long for column 'user_review' at row 1
+	// please fix both
 	private String userReview;
+
 	private String userId;
 
 	public String getImdbId() {

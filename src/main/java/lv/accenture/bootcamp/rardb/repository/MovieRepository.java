@@ -15,6 +15,8 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 
 
 
+	//TODO : imdbID is quite particular thing, so user will not enter it (like a title)
+	// so LIKE is not suitable here (and @Query (and all the function) also, parent class already has findById)
 	@Query("Select c FROM Movie c Where c.imdbId LIKE %:id%")
 
 	Movie findById(@Param(value = "id") String imdbId);
@@ -33,6 +35,7 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 			
 	Iterable<Movie> findTopTen();
 
+	//TODO: Also not right place for this code
 	default void addRanking(List<Movie> movieRatingList) {
 		for ( int i=0; i<movieRatingList.size(); i++) {
 			movieRatingList.get(i).setRanking(i+1);

@@ -19,14 +19,19 @@ import lv.accenture.bootcamp.rardb.model.Movie;
 @Service
 public class OmdbAPIService {
 
+	//TODO : consider constant-style for this variables  (private final static REQUEST_URL = ... )
 	private String requestUrl = "http://www.omdbapi.com/?apikey=fe474bfb";
 	private String searchByTitle = "&t=";
 	private String searchGeneral = "&s=";
 	private String searchById = "&i=";
+
+	//TODO : 1) extremely not thread-safe 2) easy to be converted to local variable
 	private List<SearchResult> searchList = null;
 	
 	public String checkTitle(String Title) {
 		if (Title.contains(" ")) {
+			//TODO: to get well-formed URL in case when title contains whitespace, use .replaceAll(" ", "%20")
+			// check on contains is redundant - replaceAll already checks it
 			Title = Title.replaceAll(" ", "&");
 		}
 		return Title;
