@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import lv.accenture.bootcamp.rardb.model.Movie;
+
 @Service
 public class OmdbAPIService {
 
@@ -85,4 +87,16 @@ public class OmdbAPIService {
 
 	}
 
+	public Movie getInfoFromOmdb(String imdbID) {
+		Gson gson = new Gson();
+		String jsonResponse = getApiResponse(imdbID, searchById);
+		SearchResult searchResult = gson.fromJson(jsonResponse, SearchResult.class);
+		Movie movie = new Movie();
+		movie.setImdbId(imdbID);
+		movie.setPoster(searchResult.getPoster());
+		movie.setTitle(searchResult.getTitle());
+		return movie;
+
+}
+	
 }

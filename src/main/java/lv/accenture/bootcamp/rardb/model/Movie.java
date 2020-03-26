@@ -60,11 +60,11 @@ public class Movie implements Serializable {
 		this.ranking = ranking;
 	}
 
-	public String gettitle() {
+	public String getTitle() {
 		return title;
 	}
 
-	public void settitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 

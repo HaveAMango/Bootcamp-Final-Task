@@ -60,10 +60,14 @@ public class MovieController {
 		
 		List<Movie> movieList = (List<Movie>) movieRepository.findTopTen();
 		movieRepository.addRanking(movieList);
+		System.out.println("movie list list repository" + movieList);
 		
 		Iterable<Movie> movies = movieRepository.findTopTen();
+		
+		System.out.println("iterable  list list repository" + movies);
+		
 		model.addAttribute("loggedIn", loggedInService.loggedIn());
-		model.addAttribute("moviesTop", movies);
+		model.addAttribute("movies", movies);
 		
 
 		return "main";
@@ -96,8 +100,8 @@ public class MovieController {
 
 		reviewRepository.save(reviewAdd);
 
-		Movie movieToReview = new Movie();
-		movieToReview.setImdbId(id);
+		Movie movieToReview = search.getInfoFromOmdb(id);
+//		movieToReview.setImdbId(id);
 
 		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
 		System.out.println("list: " + movieRatingList.toString());
