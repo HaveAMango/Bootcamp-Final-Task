@@ -29,9 +29,9 @@ import lv.accenture.bootcamp.rardb.repository.ReviewRepository;
 @Controller
 public class MovieController {
 
-	//TODO: If already autowired, why then initialized? :)
+	//DONE - TODO: If already autowired, why then initialized? :)
 	@Autowired
-	OmdbAPIService search = new OmdbAPIService();
+	private OmdbAPIService search;
 
 	@Autowired
 	private MovieRepository movieRepository;
@@ -97,12 +97,12 @@ public class MovieController {
 
 		reviewRepository.save(reviewAdd);
 
-		//TODO : If somebody is already written a review (and hence saved movie from extrenal API to DB)
+		//ANS: no, movie is not saved to BD until review is written; TODO : If somebody is already written a review (and hence saved movie from extrenal API to DB)
 		// we can check that fact and don't use extrenal API call (if Movie is already saved in our DB)
 		Movie movieToReview = search.getInfoFromOmdb(id);
 //		movieToReview.setImdbId(id);
 
-		//TODO: Serious possible misunderstanding here : users rate NOT movies, but REVIEWS,
+		//ANS: but user is writing review to movie and sets raiting for it. - TODO: Serious possible misunderstanding here : users rate NOT movies, but REVIEWS,
 		// written by another users. Needs to be re-implemented
 		List<Review> movieRatingList = reviewRepository.findByIbmId(id);
 

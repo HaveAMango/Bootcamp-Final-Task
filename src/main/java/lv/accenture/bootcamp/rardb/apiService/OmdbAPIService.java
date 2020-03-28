@@ -19,27 +19,27 @@ import lv.accenture.bootcamp.rardb.model.Movie;
 @Service
 public class OmdbAPIService {
 
-	//TODO : consider constant-style for this variables  (private final static REQUEST_URL = ... )
-	private String requestUrl = "http://www.omdbapi.com/?apikey=fe474bfb";
-	private String searchByTitle = "&t=";
-	private String searchGeneral = "&s=";
-	private String searchById = "&i=";
+	//DONE - TODO : consider constant-style for this variables  (private final static REQUEST_URL = ... )
+	private final static String REQUEST_URL = "http://www.omdbapi.com/?apikey=fe474bfb";
+	private final static String SEARCH_BY_TITLE = "&t=";
+	private final static String SEARCH_GENERAL = "&s=";
+	private final static String SEARCH_BY_ID = "&i=";
 
-	//TODO : 1) extremely not thread-safe 2) easy to be converted to local variable
-	private List<SearchResult> searchList = null;
+	//DONE - TODO : 1) extremely not thread-safe 2) easy to be converted to local variable
+	//private List<SearchResult> searchList = null;
 	
 	public String checkTitle(String Title) {
 		if (Title.contains(" ")) {
-			//TODO: to get well-formed URL in case when title contains whitespace, use .replaceAll(" ", "%20")
+			//DONE - TODO: to get well-formed URL in case when title contains whitespace, use .replaceAll(" ", "%20")
 			// check on contains is redundant - replaceAll already checks it
-			Title = Title.replaceAll(" ", "&");
+			Title = Title.replaceAll(" ", "%20");
 		}
 		return Title;
 	}
 	public String getApiResponse(String requestedFilm, String searchType) {	
 		try {
 
-			URL url = new URL(requestUrl + searchType + requestedFilm);
+			URL url = new URL(REQUEST_URL + searchType + requestedFilm);
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 			urlConnection.setRequestMethod("GET");
 			urlConnection.setReadTimeout(3000);
@@ -66,7 +66,7 @@ public class OmdbAPIService {
 	}
 	
 	public List<SearchResult> getFilmList(String requestedFilm) {
-		searchList = new ArrayList<SearchResult>();
+		List<SearchResult> searchList = new ArrayList<SearchResult>();
 		requestedFilm = checkTitle(requestedFilm);
 		Gson gson = new Gson();
 		if (requestedFilm.length() <=2) {
@@ -74,7 +74,7 @@ public class OmdbAPIService {
 			searchList.add(searchResult);
 			return searchList;
 		} else {
-		String jsonResponse = getApiResponse(requestedFilm, searchGeneral);
+		String jsonResponse = getApiResponse(requestedFilm, SEARCH_GENERAL);
 		SearchResponse response = gson.fromJson(jsonResponse, SearchResponse.class);
 		if (response.getResponse()) {
 			searchList = response.getSearch();
@@ -86,7 +86,7 @@ public class OmdbAPIService {
 	
 	
 	public SearchResult getFilmByTitle(String requestedFilm, Gson gson) {
-			String jsonResponse = getApiResponse(requestedFilm, searchByTitle);
+			String jsonResponse = getApiResponse(requestedFilm, SEARCH_BY_TITLE);
 			SearchResult searchResult = gson.fromJson(jsonResponse, SearchResult.class);
 			return searchResult;
 
@@ -94,11 +94,13 @@ public class OmdbAPIService {
 
 	public Movie getInfoFromOmdb(String imdbID) {
 		Gson gson = new Gson();
-		String jsonResponse = getApiResponse(imdbID, searchById);
+		String jsonResponse = getApiResponse(imdbID, SEARCH_BY_ID);
 		SearchResult searchResult = gson.fromJson(jsonResponse, SearchResult.class);
 		Movie movie = new Movie();
 		movie.setImdbId(imdbID);
-		movie.setPoster(searchResult.getPoster());
+		if (!searchResult.getPoster().equals("N/A")) {
+			movie.setPoster(searchResult.getPoster());
+		}
 		movie.setTitle(searchResult.getTitle());
 		movie.setImdbRating(searchResult.getImdbRating());
 		return movie;
