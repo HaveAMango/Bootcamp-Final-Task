@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>RARDB3 add a movie Review</title>
+    <title>RARDB3 Search Results</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
@@ -20,7 +20,7 @@
 
 		
 		<div th:if="${not #lists.isEmpty(findMovie)}">
-		    <table class="table table-bordered">
+		   <table class="table table-hover table-dark" id="padding1">
 				<tr class = "table-active">
 					<th>Title</th>
 					<th>Year</th>		

@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>RARDB3</title>
+    <title>Top 10</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>RARDB</h1>
-		
-        
-		<!--  search -->
-				<form th:action="@{/movies/search}" method="get">
+
+ <div class="container-fluid">
+ <div class="row">
+    <div class="col-md-2">
+    <div class="p-3">
+				<form th:action="@{/movies/search}" method="get" >
 	    	<input type="text" name="Title" id="Title" th:value="${Title}"/>
-	    	<input type="submit" value="Search"/>
+	    	<input type="submit" class="btn btn-outline-secondary" value="SEARCH" />
 
 		</form>
+		</div>
+		</div>
+		<!-- <div class="mx-auto" style="width: 200px;">
+		<a th:href="@{/movies/main}" class="btn btn-primary" data-toggle="button" aria-pressed="false" style="word-wrap: break-word;">RELOAD THE PAGE</a>
+				
+</div>
+					</div> -->
+				 <div class="col-md-8">	
+        <h1 class = "text-center p-3">RARDB</h1>
+        <h2 class="text-center p-3">Top 10 User Rated Movies</h2>
+        </div>
 		
-		<!-- table with top 10 -->
+			 <div class="col-md-2">
+		 <div class="btn-group-vertical mx-auto"style="width: 100%;">
+		 
+		<!-- a user button -->
+		
+<a th:if="${loggedIn}" th:href="@{/user}" class="btn btn-outline-secondary" id="fillingButton">MY ACOUNT</a>
+					
+					
+	<!-- Registration in option -->	
+		
+		<a th:if="!${loggedIn}" th:href="@{/registration}"class="btn btn-outline-secondary" id="fillingButton">REGISTER</a>
+		
+		
+		<!-- Login in option -->
+		
+		<a th:if="!${loggedIn}" th:href="@{/login}"class="btn btn-outline-secondary" id="fillingButton">LOGIN</a>
+		
+		<a th:href="@{/movies/main}" class="btn btn-outline-secondary" id="fillingButton">RELOAD THE PAGE</a>
+				
 
-<!-- add if - was user loged in or not and depending on that the add review button is active or not -->
+					</div>
+		
+		</div>
+       </div>
+	   </div>
+	   
+
 		 <!-- <div th:if="${not #lists.isEmpty(movies)}">  -->
 
-
-			<table class="table table-striped">
+<div class="container-fluid">
+ 
+					
+			<table class="table table-hover table-dark" id="padding1">
 
 				<tr>
-					<th>Rank</th>
-					<th>Title</th>
-					<th>Poster</th>
-					<th>RDMB Rating</th>
-					<th>IDMB Rating</th>
-					<th>Rate the Movie</th>
-					<th>Read the reviews</th>
+					<th id="topTable">Rank</th>
+					<th id="topTable">Title</th>
+					<th id="topTable">Poster</th>
+					<th id="topTable">RDMB Rating</th>
+					<th id="topTable">IDMB Rating</th>
+					<th id="topTable">Read the reviews</th>
 					
 					
 				<tr th:each="movie: ${movies}">
-					<td th:text="${movie.ranking}" /> 
-					<td th:text="${movie.title}"/> 
-					<td><img th:src="${movie.poster}" width="80" height="80" /></td> 
-					<td th:text="${movie.averageRating}" />
-					<td th:text="${movie.imdbRating}" />
+					<td th:text="${movie.ranking}" id="topTable"/> 
+					<td id="topTable" th:text="${movie.title}"/> 
+					<td id="topTable"><img th:src="${movie.poster}" width="80" height="80" /></td> 
+					<td id="topTable" th:text="${movie.averageRating}" />
+					<td id="topTable" th:text="${movie.imdbRating}" />
 					
 					
-					<!-- <td><td><a th:href="@{/movies/reviews/}"
-						class="btn btn-outline-primary"> <span>Reviews</span>-->
+			
 					
 					
-					 <td><a th:href="@{/movies/reviews/{id}(id=${movie.imdbId})}" class="btn btn-outline-primary"> <span>Reviews</span>
+					 <td id="topTable"><a th:href="@{/movies/reviews/{id}(id=${movie.imdbId})}" class="btn btn-light" style="color: black;"> <span>Reviews</span>
 					</a> </td> 
 
 
@@ -55,44 +90,8 @@
 				</tr>
 
 			</table>
-		 <!-- </div> 
-		<div th:unless="${not #lists.isEmpty(movies)}">
-			<div class="card">
-				<div class="card-body">No movie ratings available at the moment!</div>
-
 			</div>
-		</div>  -->
-					
-		<!-- a relaod button -->
-		
-		<div>
-
-		<a th:href="@{/movies/main}" class="btn btn-outline-primary">Reload
-				the page</a>
-
-					</div>
-
-		
-		<!-- a user button -->
-<a th:if="${loggedIn}" th:href="@{/user}" class="btn btn-outline-primary">My account</a>
-					</div>
-					
-	<!-- Registration in option -->	
-		<div>
-		<a th:if="!${loggedIn}" th:href="@{/registration}"class="btn btn-outline-primary">Register to access more features!</a>
-		</div>
-		
-		<!-- Login in option -->
-		<div>
-		<a th:if="!${loggedIn}" th:href="@{/login}"class="btn btn-outline-primary">Login!</a>
-		</div>
-		
-
 			
-		
-	
-
-		
     </div>
 </body>
 </html>
