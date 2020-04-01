@@ -123,8 +123,10 @@ public class MovieController {
 		Iterable<Review> reviews = reviewRepository.findByIbmId(id);
 
 		System.out.println(reviews.toString());
+		Movie movie = movieRepository.findById(id);
 
 		model.addAttribute("reviews", reviews);
+		model.addAttribute("movies", movie);
 
 		return "reviews";
 	}

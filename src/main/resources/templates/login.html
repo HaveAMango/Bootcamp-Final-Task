@@ -11,8 +11,10 @@
 		<form th:action="@{/login}" class="form-signin" method="post">
 			<div class="form-group col-md-8">
 					<br></br>
+					<label for="username" class="col-form-label">Write your username:</label>
 				<input type="text" id="username" name="myusername" class="form-control">
 					<br></br>
+					<label for="password" class="col-form-label">Write your pasword:</label><br>
 				<input type="password" id="password" name="password" class="form-control">
 					<br></br>
 					<div id="errors" th:if="${(param.error != null)}">Login or password is incorrect</div>

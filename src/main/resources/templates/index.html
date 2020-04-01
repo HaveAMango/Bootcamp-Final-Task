@@ -7,7 +7,7 @@
 
 </head>
 <body>
-    <div class="container" id="#container123">
+   <!--  <div class="container" id="#container123">
         <h1>RARDB</h1>
 
 		 <form th:action="@{/movies/search}" method="get">
@@ -15,22 +15,26 @@
 	    	<input type="submit" value="Search"/>
 
 		</form>
-    </div>
-<div class="container">
+    </div> -->
+	<div class="container p-3">
+	<h1 class="text-center p-3" >RARDB</h1>
+<h2 class="text-center p-3" style="font-style:italic;">Where users can express their true opinion about the movies</h2>
+   
+
  	
   <!-- log in option -->
+		<div class="btn-group-vertical mx-auto p-3" style="width:100%;">
+		<a th:href="@{/login}"class="btn btn-outline-primary  btn-lg">Log-in to access more features!</a>
+	
 		
-		<a th:href="@{/login}"class="btn btn-outline-primary">Log-in to access more features!</a>
-		<!--</div>-->
-		<!-- Guest in option -->
-		<!--<div>-->
-		<a th:href="@{/main}"class="btn btn-outline-primary">or continue as a guest...</a>
-		<!--</div>-->
+		
 	<!-- Registration in option -->	
-		<!--<div>-->
-		<a th:href="@{/registration}"class="btn btn-outline-primary">Register to access more features!</a>
-		<!--</div>-->
+	
+		<a th:href="@{/registration}"class="btn btn-outline-primary  btn-lg">Register to access more features!</a>
+		<!-- Guest in option -->
 		
+		<a th:href="@{/main}"class="btn btn-outline-primary  btn-lg">or continue as a guest...</a>
+		</div>
 		
 </body>
 </html>

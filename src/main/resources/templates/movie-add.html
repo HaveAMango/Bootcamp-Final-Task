@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>RARDB3 add a movie Review</title>
+    <title>Add a Review</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <h1>RARDB</h1>
 
 
@@ -16,36 +16,46 @@
 			<div class="row">
 				<div class="form-group col-md-8">
 					<label for="userReview" class="col-form-label">Write a review:</label><br>
-					<input type="text"  th:field="*{userReview}" class="form-control" id="userReview"> 
+					<textarea type="text"  th:field="*{userReview}" class="form-control p-2" id="userReview"> 
 					
-						<label for="rating" class="col-form-label">Rate the movie:</label><br>
-						<span th:if="${#fields.hasErrors('userReview')}" th:errors="*{userReview}" class="text-danger"/><br>
-
-		 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+						
+						<span th:if="${#fields.hasErrors('userReview')}" th:errors="*{userReview}" rows="10" class="text-danger"/><br>
+						</textarea>
+						
+				<label for="rating" class="col-form-label pt-4 pb-2">Rate the movie:</label><br>	
+		 <div class="btn-group btn-group-toggle p-4" data-toggle="buttons">
+  
   <label class="btn btn-secondary active">
     
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option1" value="1" checked>
-         <label class="btn btn-secondary active" for="option1">1</label>
+		<input type="radio" th:field="*{rating}" id="option1" value="1">1</label>
         
-		
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option2" value="2">
-       <label class="btn btn-secondary active" for="option2">2</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option3" value="3">
-       <label class="btn btn-secondary active" for="option3">3</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option4" value="4">
-       <label class="btn btn-secondary active" for="option4">4</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option5" value="5">
-        <label class="btn btn-secondary active" for="option5">5</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option6" value="6">
-       <label class="btn btn-secondary active" for="option6">6</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option7" value="7">
-        <label class="btn btn-secondary active" for="option7">7</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option8" value="8">
-       <label class="btn btn-secondary active" for="option8">8</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option9" value="9">
-        <label class="btn btn-secondary active" for="option9">9</label>
-		<input class="btn btn-secondary active" type="radio" th:field="*{rating}" id="option10" value="10">
-        <label class="btn btn-secondary active" for="option10">10</label>
+		<label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option2" value="2">
+       2</label>
+	   <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option3" value="3">
+       3</label>
+	   <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option4" value="4">
+       4</label>
+	   <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option5" value="5">
+        5</label>
+		<label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option6" value="6">
+       6</label>
+	    <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option7" value="7">
+       7</label>
+	   <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option8" value="8">
+       8</label>
+	   <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option9" value="9">
+        9</label>
+		 <label class="btn btn-secondary active">
+		<input type="radio" th:field="*{rating}" id="option10" value="10">
+       10</label>
 		
 			</div> 
 				<!--<br>
@@ -63,7 +73,7 @@
 
 				</div>-->
 				<div class="form-group col-md-8">
-					<input type="submit" class="btn btn-primary" value="Add a review">
+					<input type="submit" class="btn btn-primary" value="Add a review" style="width:50%;">
 				</div>
 
 			
