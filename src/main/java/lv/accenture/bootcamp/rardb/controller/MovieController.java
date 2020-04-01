@@ -89,17 +89,18 @@ public class MovieController {
 	@PostMapping("/movies/movie-add/{id}")
 	public String addReview(@PathVariable String id, @Valid Review reviewAdd, BindingResult bindingResult) {
 //		Movie movie = new Movie(search.getFilmList(requestedFilm));
-
+		// ANS: no, movie is not saved to BD until review is written; TODO : If somebody
+				// is already written a review (and hence saved movie from extrenal API to DB)
+				// we can check that fact and don't use extrenal API call (if Movie is already
+				// saved in our DB)
+				Movie movieToReview = search.getInfoFromOmdb(id);
+//				movieToReview.setImdbId(id);
 		reviewAdd.setImdbId(id);
-
+		reviewAdd.setUserId(loggedInService.getCurrentUser().getUserName());
+		reviewAdd.setTittle(movieToReview.getTitle());
+		
 		reviewRepository.save(reviewAdd);
 
-		// ANS: no, movie is not saved to BD until review is written; TODO : If somebody
-		// is already written a review (and hence saved movie from extrenal API to DB)
-		// we can check that fact and don't use extrenal API call (if Movie is already
-		// saved in our DB)
-		Movie movieToReview = search.getInfoFromOmdb(id);
-//		movieToReview.setImdbId(id);
 
 		// ANS: but user is writing review to movie and sets raiting for it. - TODO:
 		// Serious possible misunderstanding here : users rate NOT movies, but REVIEWS,

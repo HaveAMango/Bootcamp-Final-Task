@@ -32,7 +32,8 @@ public class Review implements Serializable {
 	// 2) 10-line text paragraph causes MysqlDataTruncation: Data truncation: Data
 	// too long for column 'user_review' at row 1
 	// please fix both
-	 @Column(columnDefinition="TEXT")
+	
+	 @Column(columnDefinition="TEXT", length=3000)
 	private String userReview;
 
 	private String userId;

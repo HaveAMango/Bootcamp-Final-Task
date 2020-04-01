@@ -16,7 +16,7 @@
 	    	<input type="submit" value="Search"/>
 
 		</form>
-		  <span> <a th:href="@{/}" class="btn btn-outline-secondary">Back! </a> </span>
+		  <span> <a th:href="@{/main}" class="btn btn-outline-secondary">Back! </a> </span>
 
 		
 		<div>
@@ -43,7 +43,9 @@
 
 		       </div>
 
-
+<form th:action="@{/logout}" method="post">
+         <button type="submit">Sign Out</button>        
+ </form>
 		
 
 </body>

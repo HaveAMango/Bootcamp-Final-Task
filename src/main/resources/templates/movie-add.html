@@ -16,19 +16,19 @@
 			<div class="row">
 				<div class="form-group col-md-8">
 					<label for="userReview" class="col-form-label">Write a review:</label><br>
-					<textarea type="text"  th:field="*{userReview}" class="form-control p-2" id="userReview"> 
-					
-						
+					<textarea type="text"  th:field="*{userReview}" class="form-control p-2" id="userReview">
+
+
 						<span th:if="${#fields.hasErrors('userReview')}" th:errors="*{userReview}" rows="10" class="text-danger"/><br>
 						</textarea>
-						
-				<label for="rating" class="col-form-label pt-4 pb-2">Rate the movie:</label><br>	
+
+				<label for="rating" class="col-form-label pt-4 pb-2">Rate the movie:</label><br>
 		 <div class="btn-group btn-group-toggle p-4" data-toggle="buttons">
-  
+
   <label class="btn btn-secondary active">
-    
+
 		<input type="radio" th:field="*{rating}" id="option1" value="1">1</label>
-        
+
 		<label class="btn btn-secondary active">
 		<input type="radio" th:field="*{rating}" id="option2" value="2">
        2</label>
@@ -76,10 +76,10 @@
 					<input type="submit" class="btn btn-primary" value="Add a review" style="width:50%;">
 				</div>
 
-			
 
-    </div>
-	</form>
+
+				</div>
+		</form>
 	</div>
 </body>
 </html>

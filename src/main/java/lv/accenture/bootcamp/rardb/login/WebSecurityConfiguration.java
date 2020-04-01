@@ -39,7 +39,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     		.antMatchers("/movie/**").permitAll()
     		.and().formLogin().loginPage("/login").usernameParameter("myusername")
     		.failureUrl("/login?error=true")
-    		.defaultSuccessUrl("/main");
+    		.defaultSuccessUrl("/main")
+    		.and().logout()
+    		.logoutSuccessUrl("/login.html");
    
     	
 
