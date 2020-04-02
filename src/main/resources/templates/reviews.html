@@ -6,48 +6,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>RARDB</h1>
-		
-		
-		<form action="#" th:action="@{/movies/reviews/}"
-			
-			th:object="${review}" method="get">
-			
-			<h2> User Reviews</h2>
-			
-			
-			 <span> <a th:href="@{/}" class="btn btn-outline-secondary float-right">BACK</a> </span>
-			 
-			 <table class="table table-striped">			
-			<tr th:each="movie: ${movies}">
-			<td id="topTable"><img th:src="${movie.poster}" width="80" height="80" /> 
-			<td id="topTable" th:text="${movie.title}"/> 
-					<td th:text="${movie.ranking}" id="topTable"/> 
-					<td id="topTable" th:text="${movie.averageRating}" />
-					<td id="topTable" th:text="${movie.imdbRating}" />
-					</tr>
-			
+<div class="container">
+    <h1>RARDB</h1>
+    <form action="#" th:action="@{/movies/reviews/}" th:object="${review}" method="get">
+        <h2> User Reviews</h2>
+        <span> <a th:href="@{/main}" class="btn btn-outline-secondary float-right">BACK</a> </span>
+        <table class="table table-striped">
+            <tr th:each="movie: ${movies}">
+                <td id="topTable"><img th:src="${movie.poster}" width="80" height="80"/>
+                <td id="topTable" th:text="${movie.title}"></td>
+                <td th:text="${movie.ranking}" id="topTable"></td>
+                <td id="topTable" th:text="${movie.averageRating}"></td>
+                <td id="topTable" th:text="${movie.imdbRating}"></td>
+            </tr>
+        </table>
 
-			</table>
-			
-			<!-- <div class="overflow-auto" th:each="review: ${reviews}">
-			<div class="overflow-auto" th:text="${review.userReview}"/>  -->
-<table class="table table-striped">			
-			<tr>
-					
-				
-			<tr th:each="review: ${reviews}">
-			<td th:text="${review.userId}" /> 
-					<td th:text="${review.userReview}" /> 
-					
-			
-
-			</table>
-
-    </div>
- <!-- 	  </div>
-	<!-- 	</form>-->
-	<!-- </div>-->
+        <!-- <div class="overflow-auto" th:each="review: ${reviews}">
+        <div class="overflow-auto" th:text="${review.userReview}"/>  -->
+        <table class="table table-striped">
+            <tr th:each="review: ${reviews}">
+                <td th:text="${review.userId}"></td>
+                <td th:text="${review.userReview}"></td>
+                <td><a th:href="@{/movies/comments/{reviewId}(reviewId=${review.reviewId})}"
+                       class="btn btn-outline-secondary" id="fillingButton">Comments </a></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

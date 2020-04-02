@@ -1,5 +1,6 @@
 package lv.accenture.bootcamp.rardb.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,5 +20,6 @@ public interface CommentaryRepository extends CrudRepository<Commentary, Long> {
 	@Query("Select AVG(c.rating) FROM Commentary c Where c.reviewId=:id")
 	Long calculateRating(@Param(value = "id") Long id);
 
+	Collection<Commentary> findByReviewId(Long reviewId);
 	
 }

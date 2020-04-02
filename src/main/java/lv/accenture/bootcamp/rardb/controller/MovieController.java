@@ -123,7 +123,6 @@ public class MovieController {
 
 		Iterable<Review> reviews = reviewRepository.findByIbmId(id);
 
-		System.out.println(reviews.toString());
 		Movie movie = movieRepository.findById(id);
 
 		model.addAttribute("reviews", reviews);
@@ -137,9 +136,17 @@ public class MovieController {
 		
 		Commentary commentary = new Commentary();
 		commentary.setReviewId(id);
+		Review review = reviewRepository.findById(id).get();
+		Movie movie = movieRepository.findById(review.getImdbId());
 
+		Collection<Commentary> comments = commentaryRepository.findByReviewId(id);
+
+		model.addAttribute("comments", comments);
+		model.addAttribute("reviews", review);
+		model.addAttribute("reviewId", review.getReviewId());
+		model.addAttribute("movies", movie);
 		model.addAttribute("commentary", commentary);
-		return "add-commentary"; 
+		return "comments";
 	
 	}
 	
@@ -160,6 +167,6 @@ public class MovieController {
 		reviewRepository.save(review);
 		
 		
-	return "commentPage";
+	return "comments";
 	}
-	}
+}
