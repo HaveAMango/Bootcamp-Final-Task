@@ -4,44 +4,50 @@
     <title>RARDB3</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script>
+        function toggleReview(e) {
+            e = e || window.event;
+            var src = e.target || e.srcElement;
+            console.log(src);
+        }
+    </script>
 </head>
 <body>
 <div class="container">
     <h1>RARDB</h1>
-    <form action="#" th:action="@{/movies/reviews/}" th:object="${review}" method="get">
-        <h2> User Reviews</h2>
-        <span> <a th:href="@{/main}" class="btn btn-outline-secondary float-right">BACK</a> </span>
-        <table class="table table-striped">
+    <span> <a th:href="@{/main}" class="btn btn-outline-secondary float-right">BACK</a> </span>
+    <h2>User Reviews</h2>
+    <table class="table table-striped">
+        <tr>
             <th></th>
-	<th>Title</th>
-	<th>RARDB3 User Rating</th>
-	<th>IMDB Rating</th>
+            <th>Title</th>
+            <th>RARDB3 User Rating</th>
+            <th>IMDB Rating</th>
+        </tr>
         <tr th:each="movie: ${movies}">
-            <td id="topTable"><img th:src="${movie.poster}" width="80" height="80"/>
-            <td id="topTable" th:text="${movie.title}"/>
-            <td id="topTable" th:text="${movie.averageRating}"/>
-            <td id="topTable" th:text="${movie.imdbRating}"/>
-            </tr>
-        </table>
-
-        <!-- <div class="overflow-auto" th:each="review: ${reviews}">
-        <div class="overflow-auto" th:text="${review.userReview}"/>  -->
-        <table class="table table-striped">
-					
-					<th>Review</th>
-					<th>Rating</th>
-					<th>User</th>
-					<th></th>
-            <tr th:each="review: ${reviews}">
-<td th:text="${review.userReview}"></td>               
-			  
-				<td th:text="${review.reviewRating}"></td>
-                 <td th:text="${review.userId}"></td>
-                <td class="align-middle"><a th:href="@{/movies/comments/{reviewId}(reviewId=${review.reviewId})}"
-                       class="btn btn-outline-secondary " id="fillingButton">Comments </a></td>
-            </tr>
-        </table>
-    </form>
+            <td id="topTable"><img th:src="${movie.poster}" width="60" height="82"/></td>
+            <td id="topTable" th:text="${movie.title}"></td>
+            <td id="topTable" th:text="${movie.averageRating}"></td>
+            <td id="topTable" th:text="${movie.imdbRating}"></td>
+        </tr>
+    </table>
+    <table class="table table-striped">
+        <tr>
+            <th>Review</th>
+            <th>Rating</th>
+            <th>User</th>
+            <th></th>
+        </tr>
+        <tr th:each="review: ${reviews}">
+            <td th:text="${review.userReview}"></td>
+            <td th:text="${review.reviewRating}"></td>
+            <td th:text="${review.userId}"></td>
+            <td class="align-middle">
+                <a th:href="@{/movies/comments/{reviewId}(reviewId=${review.reviewId})}"
+                   class="btn btn-outline-secondary " id="fillingButton">Comments </a>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
