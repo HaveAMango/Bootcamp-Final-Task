@@ -157,6 +157,7 @@ public class MovieController {
 		Review review = reviewRepository.findById(id).get();
 		commentary.setReviewId(id);
 		commentary.setImdbId(review.getImdbId());
+		String imdbId = commentary.getImdbId();
 		
 		
 		commentaryRepository.save(commentary);
@@ -167,6 +168,7 @@ public class MovieController {
 		reviewRepository.save(review);
 		
 		
-	return "comments";
+		
+	return "redirect:/movies/comments/{id}";
 	}
 }
