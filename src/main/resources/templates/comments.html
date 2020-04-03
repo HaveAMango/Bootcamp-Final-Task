@@ -8,113 +8,114 @@
 </head>
 <body>
 <div class="container">
+
+</div>
+<div class="container">
+    <div class="row"></div>
     <h1>RARDB</h1>
-
-    <h2> User Reviews</h2>
-
     <span> <a th:href="@{/main}" class="btn btn-outline-secondary float-right">BACK</a> </span>
-	</div>
-	<div class="container">
- <div class="row float-left">
-    <table class="table table-striped">
-	<th></th>
-	<th>Title</th>
-	<th>RARDB3 User Rating</th>
-	<th>IMDB Rating</th>
-        <tr th:each="movie: ${movies}">
-            <td id="topTable"><img th:src="${movie.poster}" width="80" height="80"/>
-            <td id="topTable" th:text="${movie.title}"/>
-            <td id="topTable" th:text="${movie.averageRating}"/>
-            <td id="topTable" th:text="${movie.imdbRating}"/>
-        </tr>
-    </table>
-	</div>
+    <h2>User Reviews</h2>
+    <div class="row">
+        <table class="table table-striped">
+            <th></th>
+            <th>Title</th>
+            <th>RARDB3 User Rating</th>
+            <th>IMDB Rating</th>
+            <tr th:each="movie: ${movies}">
+                <td id="topTable"><img th:src="${movie.poster}" width="80" height="80"/>
+                <td id="topTable" th:text="${movie.title}"/>
+                <td id="topTable" th:text="${movie.averageRating}"/>
+                <td id="topTable" th:text="${movie.imdbRating}"/>
+            </tr>
+        </table>
+    </div>
 
     <!-- <div class="overflow-auto" th:each="review: ${reviews}">
     <div class="overflow-auto" th:text="${review.userReview}"/>  -->
-<!-- <div class="container-col-md-8"> -->
-<div class="container">
-<div class="row float-left">
-    <table class="table table-striped">
-					<th>Review</th>
-					<th>Rating</th>
-					<th>User</th>
-        <tr th:each="review: ${reviews}">
-            <td th:text="${review.userReview}" class="text-left"></td>
-			<td th:text="${review.reviewRating}"></td>
-			 <td th:text="${review.userId}"></td>
-        </tr>
-    </table>
-	</div>
+    <!-- <div class="container-col-md-8"> -->
+    <div class="row">
+        <h3>Review</h3>
+        <table class="table table-striped">
+            <th>Review</th>
+            <th>Rating</th>
+            <th>User</th>
+            <tr th:each="review: ${reviews}">
+                <td th:text="${review.userReview}" class="text-left"></td>
+                <td th:text="${review.reviewRating}"></td>
+                <td th:text="${review.userId}"></td>
+            </tr>
+        </table>
+    </div>
 
-<!-- <div class="container-col-md-10 float-right"> -->
+    <!-- <div class="container-col-md-10 float-right"> -->
 
-<div class="row float-right">
-<h3 class="float-right "> Comments</h3>
-    <table class="table table-striped">
-	
-        <tr th:each="comment: ${comments}">
-            <td th:text="${comment.userId}"></td>
-            <td th:text="${comment.comment}" class="text-right"></td>
+    <div class="row w-50 float-right">
+        <h3> Comments</h3>
+        <table class="table table-striped">
 
-        </tr>
-    </table>
-    <form action="#" th:action="@{/movies/comments/{reviewId}(reviewId=${reviewId})}" th:object="${commentary}" method="post">
-        <div class="row">
-            <div th:if="${loggedIn}" class="form-group col-md-12">
-                Comment:
-                <br></br>
-                <textarea type="text" th:field="*{comment}" class="form-control p-2" id="commentaryId"></textarea>
+            <tr th:each="comment: ${comments}">
+                <td th:text="${comment.userId}" class="font-weight-bold"></td>
+                <td th:text="${comment.comment}" class="text-right"></td>
+
+            </tr>
+        </table>
+        <form action="#" th:action="@{/movies/comments/{reviewId}(reviewId=${reviewId})}" th:object="${commentary}"
+              method="post">
+            <div class="row">
+                <div th:if="${loggedIn}" class="form-group col-md-12">
+                    Comment:
+                    <br></br>
+                    <textarea type="text" th:field="*{comment}" class="form-control p-2"
+                              id="commentaryId"></textarea>
+                </div>
+
+                <!--- changes -->
+
+
             </div>
-			
-			<!--- changes -->
-			
-		
-			</div >
-			<!--- changes -->
-        <div th:if="${loggedIn}">
-			<label for="rating" class="col-form-label">Rate the review:</label>
-			
-			<div class="btn-group btn-group-toggle p-4" data-toggle="buttons">
+            <!--- changes -->
+            <div th:if="${loggedIn}">
+                <label for="rating" class="col-form-label">Rate the review:</label>
 
-  <label class="btn btn-secondary active">
+                <div class="btn-group btn-group-toggle p-4" data-toggle="buttons">
 
-		<input type="radio" th:field="*{rating}" id="option1" value="1">1</label>
+                    <label class="btn btn-secondary active">
 
-		<label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option2" value="2">
-       2</label>
-	   <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option3" value="3">
-       3</label>
-	   <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option4" value="4">
-       4</label>
-	   <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option5" value="5">
-        5</label>
-		<label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option6" value="6">
-       6</label>
-	    <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option7" value="7">
-       7</label>
-	   <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option8" value="8">
-       8</label>
-	   <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option9" value="9">
-        9</label>
-		 <label class="btn btn-secondary active">
-		<input type="radio" th:field="*{rating}" id="option10" value="10">
-       10</label>
-        </div>
-        <div class="form-group col-md-8">
-            <input type="submit" class="btn btn-outline-secondary" value="Add comment" style="width:50%;">
-        </div>
+                        <input type="radio" th:field="*{rating}" id="option1" value="1">1</label>
+
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option2" value="2">
+                        2</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option3" value="3">
+                        3</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option4" value="4">
+                        4</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option5" value="5">
+                        5</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option6" value="6">
+                        6</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option7" value="7">
+                        7</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option8" value="8">
+                        8</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option9" value="9">
+                        9</label>
+                    <label class="btn btn-secondary active">
+                        <input type="radio" th:field="*{rating}" id="option10" value="10">
+                        10</label>
+                </div>
+                <div class="form-group col-md-8">
+                    <input type="submit" class="btn btn-outline-secondary" value="Add comment" style="width:50%;">
+                </div>
             </div>
-    </form>
-	</div>
-	</div>
+        </form>
+    </div>
 </body>
 </html>

@@ -147,7 +147,7 @@ public class MovieController {
 		model.addAttribute("reviewId", review.getReviewId());
 		model.addAttribute("movies", movie);
 		model.addAttribute("commentary", commentary);
-		model.addAttribute("LoggedIn", loggedInService.loggedIn());
+		model.addAttribute("loggedIn", loggedInService.loggedIn());
 
 		return "comments";
 	
