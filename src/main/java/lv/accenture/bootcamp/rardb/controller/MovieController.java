@@ -106,8 +106,6 @@ public class MovieController {
 		// Serious possible misunderstanding here : users rate NOT movies, but REVIEWS,
 		// written by another users. Needs to be re-implemented
 
-		// Evija: I guess we dont need this function
-		// List<Review> movieRatingList = reviewRepository.findByIbmId(id);
 
 		Long averageRating = reviewRepository.calculateAverageRating(id);
 		movieToReview.setAverageRating(averageRating);
@@ -167,6 +165,7 @@ public class MovieController {
 		reviewRepository.save(review);
 		
 		
-	return "comments";
+		
+	return "redirect:/movies/comments/{id}";
 	}
 }
