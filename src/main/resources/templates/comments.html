@@ -61,7 +61,7 @@
     </table>
     <form action="#" th:action="@{/movies/comments/{reviewId}(reviewId=${reviewId})}" th:object="${commentary}" method="post">
         <div class="row">
-            <div class="form-group col-md-12">
+            <div th:if="${loggedIn}" class="form-group col-md-12">
                 Comment:
                 <br></br>
                 <textarea type="text" th:field="*{comment}" class="form-control p-2" id="commentaryId"></textarea>
@@ -70,8 +70,9 @@
 			<!--- changes -->
 			
 		
-			</div> 
+			</div >
 			<!--- changes -->
+        <div th:if="${loggedIn}">
 			<label for="rating" class="col-form-label">Rate the review:</label>
 			
 			<div class="btn-group btn-group-toggle p-4" data-toggle="buttons">
@@ -111,6 +112,7 @@
         <div class="form-group col-md-8">
             <input type="submit" class="btn btn-outline-secondary" value="Add comment" style="width:50%;">
         </div>
+            </div>
     </form>
 	</div>
 	</div>

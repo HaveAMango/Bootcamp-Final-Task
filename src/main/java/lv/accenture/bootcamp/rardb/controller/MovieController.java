@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import lv.accenture.bootcamp.rardb.login.User;
+import lv.accenture.bootcamp.rardb.login.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -137,6 +139,7 @@ public class MovieController {
 		Review review = reviewRepository.findById(id).get();
 		Movie movie = movieRepository.findById(review.getImdbId());
 
+
 		Collection<Commentary> comments = commentaryRepository.findByReviewId(id);
 
 		model.addAttribute("comments", comments);
@@ -144,6 +147,8 @@ public class MovieController {
 		model.addAttribute("reviewId", review.getReviewId());
 		model.addAttribute("movies", movie);
 		model.addAttribute("commentary", commentary);
+		model.addAttribute("LoggedIn", loggedInService.loggedIn());
+
 		return "comments";
 	
 	}
@@ -155,7 +160,7 @@ public class MovieController {
 		Review review = reviewRepository.findById(id).get();
 		commentary.setReviewId(id);
 		commentary.setImdbId(review.getImdbId());
-		
+		commentary.setUserId(loggedInService.getCurrentUser().getUserName());
 		
 		commentaryRepository.save(commentary);
 		
@@ -163,7 +168,8 @@ public class MovieController {
 		
 		review.setReviewRating(reviewAverage);
 		reviewRepository.save(review);
-		
+
+
 		
 		
 	return "redirect:/movies/comments/{id}";
