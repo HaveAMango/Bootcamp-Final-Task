@@ -1,22 +1,17 @@
 .headerPadding {
-
-padding-top: 100px
-
-padding-bottom: 100px
-
+    padding-top: 100px
+    padding-bottom: 100px
 }
 
+#topTable {
+    text-align: center;
+    padding: 15px;
+}
 
-#topTable
-{
-text-align: center;
-padding: 15px;
+#fillingButton {
+    width: 100%;
 }
-#fillingButton 
-{
-width: 100%;
-}
-#italicFont
-{
- font-style: italic
+
+#italicFont {
+    font-style: italic
 }
