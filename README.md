@@ -1,4 +1,4 @@
-Web page for movies? were you can:
+Web page for movies, were you can:
 create new user, 
 log in, 
 log out, 
